@@ -1,0 +1,933 @@
+<?php
+/**
+ * @file
+ * Code for the Courses feature.
+ */
+
+include_once 'courses.features.inc';
+
+/**
+ * hook menu
+ */
+function courses_menu() {
+  $items = array();
+  
+  $items['settings'] = array(
+    'title' => 'Settings',
+    'description' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('courses_settings'),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['mycircle']  = array(
+    'title' => 'My Circle',
+    'description' => '',
+    'page callback' => 'courses_mycircle_display',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['mycircle/advisors']  = array(
+    'title' => 'My Circle',
+    'description' => '',
+    'page callback' => 'courses_mycircle_display',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['for-advisors']  = array(
+    'title' => 'For Advisors',
+    'description' => '',
+    'page callback' => 'courses_foradvisors_display',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['comments']  = array(
+    'title' => 'For Advisors',
+    'description' => '',
+    'page callback' => 'courses_comments_display',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['faculty/%/settings'] = array(
+    'title' => 'Photo Settings',
+    'description' => 'Photo Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('photo_settings',1),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['user/profile'] = array(
+    'title' => 'Photo Profile',
+    'description' => 'Photo Profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('course_user_profile'),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * hook theme
+ */
+function courses_theme() {
+  $themes = array (
+    'circle' => array(
+      'template' => 'circle',
+      'arguments' => array('courses')
+    ),
+    'instructors' => array(
+      'template' => 'instructors',
+    ),
+    'advisors' => array(
+      'template' => 'advisors',
+    ),
+    'for-advisors' => array(
+      'template' => 'for-advisors',
+    ),
+    'comments' => array(
+      'template' => 'comments'
+    ),
+  );
+  return $themes;
+}
+
+function courses_foradvisors_display() {
+  return theme('for-advisors');
+}
+
+function courses_comments_display() {
+  return theme('comments');
+}
+
+/**
+ * display circle page
+ */
+function courses_mycircle_display() {
+  global $user;
+  $courses = array();
+  if(!empty($user->uid)) { // check is user is logged in
+    $u = user_load($user->uid);
+    //dsm($u);
+    if(!in_array('administrator', $u->roles)) { // student logged in
+      $campid = $u->field_user_campusid['und']['0']['value']?$u->field_user_campusid['und']['0']['value']:''; //determing campus id
+      if(!empty($campid)) { // determine their courses with campus ID
+        $courses = courses_find_instructors2($campid);
+        $faculty = courses_find_faculty($campid);
+        $housing = courses_find_housing($campid);
+        // $instructors = courses_get_ins_info($campid);
+        $all = array_merge($courses, $faculty, $housing);
+        $num = count($all);
+        if($num<8) {
+          $radius = 275;
+          $width = 105;
+          $height = 105;
+        }
+        else {
+          $radius = 280;
+          $width = 90;
+          $height = 90;
+          return theme('instructors', array(
+            'courses' => $courses, 
+            'faculty' => $faculty, 
+            'housing' => $housing,
+            // 'instructors' => $instructors,
+            'num' => $num,
+            'radius' => $radius,
+            'width' => $width,
+            'height' => $height
+          ));
+        }
+
+        //dsm($radius);
+      }
+      else { //bring them to register page if no campus ID
+        return "Please click <a href='user/$u->uid/edit'>here</a> to register your campus ID.";
+      }
+    }
+
+    // elseif(in_array('instructor', $u->roles)) { // Instructor logged in
+    //   $insid = $u->field_user_campusid['und']['0']['value']?$u->field_user_campusid['und']['0']['value']:''; //determing campus id
+    //   if(!empty($insid)) { // determine their courses with campus ID
+    //     $students = courses_find_students($insid);
+    //     //dsm($students);
+    //   }
+    //   return theme('instructor',array('students' => $students));
+    // }
+
+    else { // Non-student logged in
+      $campid = arg(1);
+      if (!empty($campid)) {
+        $courses = courses_find_instructors2($campid);
+        $faculty = courses_find_faculty($campid);
+        $housing = courses_find_housing($campid);
+        // $instructors = courses_get_ins_info($campid);
+        $all = array_merge($courses, $faculty, $housing);
+        $num = count($all);
+        if($num<8) {
+          $radius = 275;
+          $width = 105;
+          $height = 105;
+          return theme('circle', array(
+            'courses' => $courses, 
+            'faculty' => $faculty, 
+            'housing' => $housing,
+            'num' => $num,
+            'radius' => $radius,
+            'width' => $width,
+            'height' => $height,
+          ));
+        }
+        else {
+          $radius = 280;
+          $width = 90;
+          $height = 90;
+          return theme('instructors', array(
+            'courses' => $courses, 
+            'faculty' => $faculty, 
+            'housing' => $housing,
+            // 'instructors' => $instructors,
+            'num' => $num,
+            'radius' => $radius,
+            'width' => $width,
+            'height' => $height
+          ));
+        }
+      }
+      else {drupal_goto($path = 'roster');}
+    }
+  }
+  else { // not logged in
+    return "Please click <a href='user'>here</a> to log in.";
+  }
+  // theme this page
+  return theme('circle', array(
+    'courses' => $courses, 
+    'faculty' => $faculty, 
+    'housing' => $housing,
+    'num' => $num,
+    'radius' => $radius,
+    'width' => $width,
+    'height' => $height,
+    ));
+}
+
+/**
+ * settings page
+ */
+function courses_settings($form, &$form_state) {
+  watchdog(WATCHDOG_ALERT, 'form');
+  dsm('123');
+  $form['test'] = array(
+    '#type' => 'textfield',
+    // '#default_value' => variable_get('plusdelta_application_key', 'plusdelta123'),
+    '#title' => t('Application Key'),
+    '#description' => t('This field sets the application setting.'),
+    '#size' => 40,
+    '#maxlength' => 40,
+    // '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+/**
+ * settings page submit
+ */
+function courses_settings_submit($form, &$form_state) {
+  watchdog(WATCHDOG_ALERT, 'submit');
+  $form_state['storage']['test'] = $form_state['values']['test'];
+  // $form_state['redirect'] = FALSE;
+  dsm('234');
+}
+
+/**
+ * hook feeds after parse
+ * refining of feeds import
+ */
+function courses_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+ // write a if here to make sure we capture the right feed.
+  $import_id = $source->id;
+
+  // import people
+  if($import_id == 'people_import') {
+    foreach ($result->items as &$value) {
+      $raw_name = $value['name'];
+      list($last, $first) = explode(", ", "$raw_name", 2);
+      $value['fname'] = $first;
+      $value['lname'] = $last;
+    }
+  }
+
+  // import enrollment
+  if($import_id == 'enroll_importer') {
+    // dsm($result->items);
+    foreach ($result->items as &$value) {
+      courses_add_enrollment($value['class_nbr'], $value['netid']);
+    }
+  }
+
+  // import student
+  if ($import_id == 'roster_importer') {
+    //dsm($result->items);
+
+    foreach ($result->items as &$value) {
+      if (!empty($value['class_nbr'])) {
+        $course_id = courses_find_course($value['class_nbr']);
+        // dsm($course_id);
+        if ($course_id)
+          $value['course'] = $course_id;
+      }
+    }
+  }
+  // if ($import_id == 'faculty_importer') {
+  //   dsm($result->items);
+
+  //   foreach ($result->items as &$value) {
+  //     $campus_id = $value['campus_id'];
+  //     //dsm($campus_id);
+  //     $value['photo'] = "public://faculty/".$campus_id.".jpeg";
+  //     dsm($value['photo']);
+  //     if(file_exists($value['photo'])) {
+  //       $campus_id = $value['campus_id'];
+  //       $value['photo'] = "public://faculty/".$campus_id.".jpeg";
+  //     }
+  //     else {
+  //       $value['photo'] = "public://faculty/placeholder.gif";
+  //     }
+  //     dsm($value['photo']);
+  //   }
+  //   dsm($result->items);
+  // }
+  if($import_id == 'housing_importer') {
+    //dsm($result->items);
+
+    // $tid = 5; // The term ID, you can't load by term name as such because multiple terms may have the same name within different (and even within the same) vocabularies.
+    // $term = taxonomy_term_load($tid);
+    foreach ($result->items as &$value) {
+      $location = NULL;
+      // find residence in location , if so, location = residence
+      //dsm($residence);
+      $residence = $value['residence_hall'];
+      $neighborhood = $value['neighborhood'];
+      //dsm(taxonomy_get_term_by_name($residence, 'location'));
+      if (taxonomy_get_term_by_name($residence, 'location')) {
+        $location = $residence; 
+        //dsm($location);
+      }
+      // find neighborhood in location, if so, location = neighborhood
+      elseif (taxonomy_get_term_by_name($neighborhood, 'location')) {
+        $location = $neighborhood;
+        //dsm($location);
+      }
+      $value['location'] = $location;
+    }
+    //dsm($result->items);
+
+    // foreach ($result->items as &$value) {
+    //   if (!empty($value['residence hall'])) {
+    //     $location = $value['residence hall'];
+    //   }
+    //   elseif (!empty($value['neighborhood'])) {
+    //     $location = $value['neighborhood'];
+    //   }
+    //   //dsm($location);
+    //   if ($location) {
+    //     $value['location'] = $location;
+    //   }
+    // }
+    // //dsm($result->items);
+  }
+
+}
+
+/**
+ * find course id from nbr
+ */
+function courses_find_course($nbr) {
+  // find course id
+  $efq = new EntityFieldQuery();
+  $result = $efq->entityCondition('entity_type', 'node')
+  ->propertyCondition('type', 'class')
+  ->fieldCondition('field_class_nbr', 'value', $nbr)
+  ->execute();
+
+  $cid = 0;
+  if (!empty($result['node'])) {
+    $keys = array_keys($result['node']);
+    $cid = $keys[0];
+  }
+
+  return $cid;
+}
+
+function courses_add_enrollment($nbr = 0, $netid = 0) {
+
+  // find course id
+  $efq = new EntityFieldQuery();
+  $result = $efq->entityCondition('entity_type', 'node')
+  ->propertyCondition('type', 'course')
+  ->fieldCondition('field_nbr', 'value', $nbr)
+  ->execute();
+
+  $cid = 0;
+  if (!empty($result['node'])) {
+    $keys = array_keys($result['node']);
+    $cid = $keys[0];
+  }
+
+  // find people id
+  $efq = new EntityFieldQuery();
+  $result = $efq->entityCondition('entity_type', 'node')
+  ->propertyCondition('type', 'people')
+  ->fieldCondition('field_netid2', 'value', $netid)
+  ->execute();
+
+  $pid = 0;
+  if (!empty($result['node'])) {
+    $keys = array_keys($result['node']);
+    $pid = $keys[0];
+  }
+
+  //dsm($cid . ' __ '. $pid);
+
+  if ($cid && $pid) {
+    // create an enrollment
+    $node = new stdClass(); // Create a new node object
+    $node->type = "enrolled"; // Or page, or whatever content type you like
+    node_object_prepare($node); // Set some default values
+    $node->title    = "Enrolled Manually";
+    $node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+    $node->field_course['und'][0]['target_id'] = $cid;
+    $node->field_student['und'][0]['target_id'] = $pid;
+
+    if($node = node_submit($node)) { // Prepare node for saving
+        node_save($node);
+    }  
+    //dsm($node);
+ } 
+}
+
+/**
+ * hook feeds presave
+ * preventing duplicate entry on feeds import enroll.
+ */
+function courses_feeds_presave(FeedsSource $source, $entity, $item) {
+  if($source->id == 'housing_importer') {
+    //dsm($entity);
+    // // Skip saving this entity.
+    // $entity->feeds_item->skip = TRUE;
+      
+  }
+}
+
+// 
+function courses_find_instructors2($campus_id) {
+  // using views to generate query data for us
+  $view = views_get_view('roster');
+  // give compus id argument to view
+  $view->exposed_input['campus_id'] = $campus_id;
+  $view->result;
+  $view->execute();
+  //dsm($view->result);
+
+  // post process the data into our theme format
+  // $courses = array (
+  //   'student_campus_id' => '',
+  //   'student_name',
+  //   'course_name',
+  //   'course_nbr',
+  //   'instructor_name'
+  // );
+  $courses = array();
+  foreach ($view->result as $value) {
+    // sort out days for this course
+    $days = array();
+    foreach ($value->field_field_class_days as $v2) {
+      $days[] = $v2['raw']['value'];
+    }
+    $days = implode(' ', $days);
+
+    $office = array();
+    foreach ($value->field_field_user_address as $v3) {
+      $office[] = $v3['raw']['value'];
+    }
+    $office = implode('<br/>', $office);
+
+    $mailing = array();
+    foreach ($value->field_field_user_pobox as $v4) {
+      $mailing[] = $v4['raw']['value'];
+    }
+    $mailing = implode('<br/>', $mailing);
+
+    // assemble the final course
+    $courses[] = array(
+      'Campus ID' => $value->field_field_user_campusid['0']['raw']['value'],
+      'Course NBR' => $value->field_field_roster_classnbr['0']['raw']['value'],
+      'Course Name' => $value->node_field_data_field_roster_course_title,
+      'Node ID' => $value->nid,
+      'Days' => $days,
+      'Start Time' => !empty($value->field_field_class_starttime['0']['raw']['value'])?$value->field_field_class_starttime['0']['raw']['value']:'',
+      'End Time' => !empty($value->field_field_class_endtime['0']['raw']['value'])?$value->field_field_class_endtime['0']['raw']['value']:'',
+      'Building' => !empty($value->field_field_class_building['0']['raw']['value'])?$value->field_field_class_building['0']['raw']['value']:'',
+      'Room' => !empty($value->field_field_class_room['0']['raw']['value'])?$value->field_field_class_room['0']['raw']['value']:'',
+      'Instructor Name' => !empty($value->field_field_user_displayname_1[0]['raw']['value'])?$value->field_field_user_displayname_1[0]['raw']['value']:'',
+      'Instructor ID' => !empty($value->field_field_user_campusid_1[0]['raw']['value'])?$value->field_field_user_campusid_1[0]['raw']['value']:'',
+      'Instructor Pic' => !empty($value->field_field_user_photo[0]['raw']['uri'])?$value->field_field_user_photo[0]['raw']['uri']:'',
+      'Office' => $office,
+      'Mailing' => $mailing,
+      'Telephone' => !empty($value->field_field_user_telephone[0]['raw']['value'])?$value->field_field_user_telephone[0]['raw']['value']:'',
+      'Email' => !empty($value->users_field_data_field_class_instructorid_mail)?$value->users_field_data_field_class_instructorid_mail:'',
+      'Type' => 'Instructor',
+    );
+  }
+  //dsm($courses);
+  return $courses;
+}
+
+function courses_find_faculty($campus_id) {
+  $viewa = views_get_view('advisors');
+  $viewa->exposed_input['title'] = $campus_id;
+  $viewa->result;
+  $viewa->execute();
+  //dsm($viewa->result);
+
+  $faculty = array();
+  foreach ($viewa->result as $value) {
+    //assemble the final course
+    $officea = array();
+    foreach ($value->field_field_user_address as $v3) {
+      $officea[] = $v3['raw']['value'];
+    }
+    $officea = implode('<br/>', $officea);
+
+    $mailinga = array();
+    foreach ($value->field_field_user_pobox as $v4) {
+      $mailinga[] = $v4['raw']['value'];
+    }
+    $mailinga = implode('<br/>', $mailinga);
+
+    $officed = array();
+    foreach ($value->field_field_user_address_1 as $v5) {
+      $officed[] = $v5['raw']['value'];
+    }
+    $officed = implode('<br/>', $officed);
+
+    $mailingd = array();
+    foreach ($value->field_field_user_pobox_1 as $v6) {
+      $mailingd[] = $v6['raw']['value'];
+    }
+    $mailingd = implode('<br/>', $mailingd);
+
+
+    $faculty[] = array(
+      array(
+        'Advisor ID' => !empty($value->field_field_advisors_advisor_campusid['0']['raw']['value'])?$value->field_field_advisors_advisor_campusid['0']['raw']['value']:'',
+        'Advisor' => !empty($value->field_field_user_displayname_1['0']['raw']['value'])?$value->field_field_user_displayname_1['0']['raw']['value']:'',
+        'Advisor Pic' => !empty($value->field_field_user_photo['0']['raw']['uri'])?$value->field_field_user_photo['0']['raw']['uri']:'',
+        'Advisor Office' => $officea,
+        'Advisor Mailing' => $mailinga,
+        'Advisor Telephone' => !empty($value->field_field_user_telephone['0']['raw']['value'])?$value->field_field_user_telephone['0']['raw']['value']:'',
+        'Advisor Email' => !empty($value->users_field_data_field_advisors_advisor_mail)?$value->users_field_data_field_advisors_advisor_mail:'',
+        'Advisor Photo' => !empty($value->field_field_user_photo['0']['raw']['uri'])?$value->field_field_user_photo['0']['raw']['uri']:'',
+        'Type' => 'AcademicAdvisor',
+      ),
+      array(
+        'Dean ID' => !empty($value->field_field_advisors_dean_campusid['0']['raw']['value'])?$value->field_field_advisors_dean_campusid['0']['raw']['value']:'',
+        'Dean' => !empty($value->field_field_user_displayname_2['0']['raw']['value'])?$value->field_field_user_displayname_2['0']['raw']['value']:'',
+        'Dean Pic' => !empty($value->field_field_user_photo_1['0']['raw']['uri'])?$value->field_field_user_photo_1['0']['raw']['uri']:'',
+        'Dean Office' => $officed,
+        'Dean Mailing' => $mailingd,
+        'Dean Telephone' => !empty($value->field_field_user_telephone_1['0']['raw']['value'])?$value->field_field_user_telephone_1['0']['raw']['value']:'',
+        'Dean Email' => !empty($value->users_field_data_field_advisors_dean_mail)?$value->users_field_data_field_advisors_dean_mail:'',
+        'Dean Photo' => !empty($value->field_field_user_photo_1['0']['raw']['uri'])?$value->field_field_user_photo_1['0']['raw']['uri']:'',
+        'Type' => 'AcademicDean',
+      ),
+    );
+
+
+  }
+   //dsm($faculty); 
+
+  return $faculty;
+}
+
+function courses_find_housing($campus_id) {
+  $viewl = views_get_view('housing');
+  // give compus id argument to view
+  $viewl->exposed_input['campus_id'] = $campus_id;
+  $viewl->result;
+  $viewl->execute();
+  //dsm($viewl->result);
+  $housing = array();
+  foreach ($viewl->result as $value) {
+
+    $officel = array();
+    foreach ($value->field_field_user_address as $v3) {
+      $officel[] = $v3['raw']['value'];
+    }
+    $officel = implode('<br/>', $officel);
+
+    $mailingl = array();
+    foreach ($value->field_field_user_pobox as $v4) {
+      $mailingl[] = $v4['raw']['value'];
+    }
+    $mailingl = implode('<br/>', $mailingl);
+
+    $officer = array();
+    foreach ($value->field_field_user_address_1 as $v5) {
+      $officer[] = $v5['raw']['value'];
+    }
+    $officer = implode('<br/>', $officer);
+
+    $mailingr = array();
+    foreach ($value->field_field_user_pobox_1 as $v6) {
+      $mailingr[] = $v6['raw']['value'];
+    }
+    $mailingr = implode('<br/>', $mailingr);
+
+    $housing[] = array(
+        array(
+          'Librarian ID' => !empty($value->field_field_user_campusid['0']['raw']['value'])?$value->field_field_user_campusid['0']['raw']['value']:'',
+          'Librarian' => !empty($value->field_field_user_displayname_1['0']['raw']['value'])?$value->field_field_user_displayname_1['0']['raw']['value']:'',
+          'Librarian Office' => $officel,
+          'Librarian Mailing' => $mailingl,
+          'Librarian Telephone' => !empty($value->field_field_user_telephone['0']['raw']['value'])?$value->field_field_user_telephone['0']['raw']['value']:'',
+          'Librarian Email' => !empty($value->users_field_data_field_librarian_campusid_mail)?$value->users_field_data_field_librarian_campusid_mail:'',
+          'Librarian Photo' => !empty($value->field_field_user_photo['0']['raw']['uri'])?$value->field_field_user_photo['0']['raw']['uri']:'',
+          'Type' => 'Librarian',
+        ),
+        array(
+          'Residence ID' => !empty($value->field_field_user_campusid_1['0']['raw']['value'])?$value->field_field_user_campusid_1['0']['raw']['value']:'',
+          'Residence' => !empty($value->field_field_user_displayname_2['0']['raw']['value'])?$value->field_field_user_displayname_2['0']['raw']['value']:'',
+          'Residence Office' => $officer,
+          'Residence Mailing' => $mailingr,
+          'Residence Telephone' => !empty($value->field_field_user_telephone_1['0']['raw']['value'])?$value->field_field_user_telephone_1['0']['raw']['value']:'',
+          'Residence Email' => !empty($value->users_field_data_field_residence_campusid_mail)?$value->users_field_data_field_residence_campusid_mail :'',
+          'Residence Photo' => !empty($value->field_field_user_photo_1['0']['raw']['uri'])?$value->field_field_user_photo_1['0']['raw']['uri']:'',
+          'Type' => 'Faculty in Residence',
+        ),
+      );
+  }
+  //dsm($housing);
+return $housing;
+}
+
+// function courses_find_students($campus_id) {
+//   // using views to generate query data for us
+//   $view = views_get_view('roster');
+//   // give campus id argument to view
+//   $view->exposed_input['instructor_id'] = $campus_id;
+//   $view->result;
+//   $view->execute();
+//   //dsm($view->result);
+//   //dsm($view->exposed_input['instructor_id']);
+
+
+//   // post process the data into our theme format
+//   // $courses = array (
+//   //   'student_campus_id' => '',
+//   //   'student_name',
+//   //   'course_name',
+//   //   'course_nbr',
+//   //   'instructor_name'
+//   // );
+//   $students = array();
+//   foreach ($view->result as $value) {
+//     $students[] = array(
+//       'Campus ID' => $value->field_field_roster_campusid['0']['raw']['value'],
+//       'Student Name' => $value->node_title, 
+//       'Course NBR' => $value->field_field_roster_classnbr['0']['raw']['value'],
+//       'Course Name' => $value->node_field_data_field_roster_course_title,
+//       'Instructor Name' => !empty($value->field_field_class_instructor[0]['raw']['value'])?$value->field_field_class_instructor[0]['raw']['value']:'',
+//       'Instructor ID' => !empty($value->field_field_class_instructorid[0]['raw']['value'])?$value->field_field_class_instructorid[0]['raw']['value']:'',
+//       'Node ID' => $value->nid,
+//     );
+//   }
+//    //dsm($students);
+//   return $students;
+// }
+// function getSet(&$var) {
+//   if (!empty($var))
+//     return $var;
+//   else return '';
+// }
+
+// function courses_get_ins_info($campus_id) {
+//   $viewu = views_get_view('users');
+//   // give compus id argument to view
+//   $viewu->exposed_input['campus_id'] = $campus_id;
+//   $viewu->result;
+//   $viewu->execute();
+//   dsm($viewu->result);
+//   $housing = array();
+//   foreach ($viewu->result as $value) {
+//     $housing[] = array(
+//         array(
+//           'Librarian ID' => !empty($value->field_field_librarian_campusid['0']['raw']['value'])?$value->field_field_librarian_campusid['0']['raw']['value']:'',
+//           'Librarian' => !empty($value->field_field_librarian_fullname['0']['raw']['value'])?$value->field_field_librarian_fullname['0']['raw']['value']:'',
+//           'Type' => 'Librarian',
+//         ),
+//       );
+//   }
+//   //dsm($housing);
+// return $housing;
+// }
+
+
+
+// load instructors from mysql directly
+function courses_find_instructors($campus_id) {
+  $query = "
+SELECT node.nid AS nid, node.title AS node_title, node_field_data_field_roster_course.title AS node_field_data_field_roster_course_title, node_field_data_field_roster_course.nid AS node_field_data_field_roster_course_nid, node.created AS node_created, field_data_field_class_instructor.field_class_instructor_value AS instructor_name, field_data_field_roster_campusid.field_roster_campusid_value AS campus_id, 'node' AS field_data_field_roster_campusid_node_entity_type, 'node' AS field_data_field_roster_classnbr_node_entity_type, 'node' AS field_data_field_class_instructor_node_entity_type
+FROM 
+{node} node
+LEFT JOIN {field_data_field_roster_course} field_data_field_roster_course ON node.nid = field_data_field_roster_course.entity_id AND (field_data_field_roster_course.entity_type = 'node' AND field_data_field_roster_course.deleted = '0')
+LEFT JOIN {node} node_field_data_field_roster_course ON field_data_field_roster_course.field_roster_course_target_id = node_field_data_field_roster_course.nid
+LEFT JOIN field_data_field_class_instructor ON 
+  field_data_field_class_instructor.entity_id = 
+  node_field_data_field_roster_course.nid
+LEFT JOIN field_data_field_roster_campusid ON 
+  field_data_field_roster_campusid.entity_id = 
+  node.nid
+WHERE (( (node.status = '1') AND (node.type IN  ('roster')) AND ( field_data_field_roster_campusid.field_roster_campusid_value = '{$campus_id}' ) ))
+ORDER BY node_created DESC
+LIMIT 2 OFFSET 0
+  ";
+
+  $result = db_query($query);
+  foreach ($result as $record) {
+    dsm($record);
+  }
+}
+
+
+/**
+ * template override
+ */
+
+// function courses_preprocess_circle(&$var) {
+//   $all = array_merge($courses, $faculty, $housing);
+//   $num = count($all);
+//   if($num<10) {
+//     $radius = 250;
+//   }
+//   else {
+//     $radius = 310;
+//   }
+//   if($num<10) {
+//     $width = 105;
+//     $height = 105;
+//   }
+//   else {
+//     $width = 98;
+//     $height = 98;
+//   }
+
+//   $var['radius'] = $radius;
+//   $var['width'] = $width;
+//   $var['height'] = $height;
+
+// }
+
+
+/**
+*function shib_settings() {
+*  $form['switch'] = array(
+*    '#type' => 'radios',
+*    '#title' => t('Switch On/Off'),
+*    '#options' => array(t('On'),t('Off')),
+*    '#description' => t('Turn Shib on or off'),
+*    '#default_value' => variable_get('switch'),
+*  );
+*  $form['submit'] = array(
+*    '#type' => 'submit',
+*    '#value' => 'Submit',
+*  );
+*  return $form;
+*}
+*
+*function shib_settings_submit($form, &$form_state) {
+*  variable_set("switch",$form_state['values']['switch']);
+*  drupal_set_message(t("Shib has been turned on/off"));
+*}
+**/
+
+/**
+* Admin page for photo settings
+*/
+function photo_settings($form, &$form_state) {
+  $uid = arg(1);
+  $luser = user_load($uid);
+  $campusid = $luser->name;
+  //dsm($luser);
+  $cardphoto = "public://faculty/".$campusid.".jpeg";
+  $cardphoto = file_create_url($cardphoto);
+  $nophoto = "public://faculty/placeholder.gif";
+  $nophoto = file_create_url($nophoto);
+  if(empty($luser->field_user_photosetting['und']['0']['value'])) {$setting=0;}
+  else {$setting = $luser->field_user_photosetting['und']['0']['value'];}
+
+  $form['#attributes'] = array('enctype' => "multipart/form-data");
+  $form['photo'] = array(
+    '#type' => 'radios',
+    '#options' => array('0' => "<img src='$cardphoto' width='120px' />", '1' => 'No Photo','2' => "Upload"),
+    '#default_value' => $setting,
+  );
+  $form['upload'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Upload Photo'),
+    '#upload_location' => 'public://faculty/',
+  );
+  $form['uid'] = array(
+    '#type' => 'hidden',
+    '#value' => $uid,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+/**
+ * settings page submit
+ */
+function photo_settings_submit($form, &$form_state) {
+  variable_set("uid",$form_state['values']['uid']);
+  $luser = user_load(variable_get("uid"));
+  variable_set("setting",$form_state['values']['photo']);
+  $setting = variable_get("setting");
+  if ($setting==0) {
+    $edit = array(
+      'field_user_photosetting' => array(
+        'und' => array(
+          0 => array(
+            'value' => $setting,
+          ),
+        ),
+      ),
+    );
+    user_save($luser, $edit);
+    drupal_set_message(t('Using Duke Card Photo'));
+  }
+  elseif ($setting==1) {
+    $edit = array(
+      'field_user_photosetting' => array(
+        'und' => array(
+          0 => array(
+            'value' => $setting,
+          ),
+        ),
+      ),
+    );
+    user_save($luser, $edit);
+    drupal_set_message(t('Using No Photo'));
+  }
+  elseif ($setting==2) {
+    $edit = array(
+      'field_user_photosetting' => array(
+        'und' => array(
+          0 => array(
+            'value' => $setting,
+          ),
+        ),
+      ),
+    );
+    user_save($luser, $edit);
+    drupal_set_message(t('Using Uploaded Photo'));
+  }
+}
+
+/**
+ * Variation of isset
+ */
+function getSet(&$v, $default = '') {
+  return isset($v) ? $v : $default;
+}
+
+/**
+ * user profile form
+ */
+function course_user_profile($form, &$form_state) {
+
+  // figure out the current login user
+  global $user;
+  $user_data = user_load($user->uid);
+  $photo = getSet($user_data->field_user_photosetting['und'][0]['value'],0);
+
+  // user default photo path
+  // dsm($user);
+  if ($user->uid == 1)
+    $user->name = '0001255';
+  $photo_path = "public://faculty/". $user->name . ".jpeg";
+  $default_photo = theme('image', array(
+    'path' => file_create_url($photo_path),
+    'width' => '120px'
+  ));
+  $photo_path = "public://default_images/placeholder.gif";
+  $no_photo = theme('image', array(
+    'path' => file_create_url($photo_path),
+    'width' => '120px'
+  ));
+  $photo_path = getSet($user_data->field_user_photo['und'][0]['uri']);
+  $user_photo = $photo_path ? theme('image', array(
+    'path' => file_create_url($photo_path),
+    'width' => '120px'
+  )) : '';
+
+  $form['uid'] = array(
+    '#type' => 'hidden',
+    '#value' => $user->uid,
+  );
+  $form['photo'] = array(
+    '#type' => 'radios',
+    '#options' => array('0' => "Default Photo <br />" . $default_photo, '1' => 'No Photo <br />' . $no_photo,'2' => "Custom Photo <br />" . $user_photo),
+    '#default_value' => $photo,
+  );
+  $form['image'] = array(
+    '#name' => 'files[fileupload]',
+    '#type' => 'file',
+    '#title' => 'Change custom photo',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;  
+}
+
+/**
+ * user profile form submit
+ */
+function course_user_profile_submit($form, &$form_state) {
+  dsm($form_state['values']);
+  dsm($_FILES);
+
+  // save the photo settings to field photosettings
+  if ($user = user_load($form_state['values']['uid'])) {
+    // save photo setting
+    $photo['field_user_photosetting']['und'][0]['value'] = $form_state['values']['photo'];
+    // save photo
+    if (!empty($_FILES['files']['name']['fileupload'])) {
+      dsm('fileupload');
+      $file = file_save_upload('fileupload', array(), 'public://card-photo');
+      $file->status = 1;
+      file_save($file);
+      $photo['field_user_photo']['und'][0] = (array)$file;
+    }
+    dsm($photo);
+    user_save($user, $photo);
+    // dsm($user);
+  }
+
+  return;
+}

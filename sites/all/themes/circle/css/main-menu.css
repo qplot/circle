@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Quicksand'), local('Quicksand'), url(Quicksand-Light.otf) format('otf');
+}
+
+/*#header .section #main-menu {
+  height: 87px;
+  padding: 8px 10px 5px 8px;
+}*/
+
+/*#block-superfish-1 ul {
+  width: 600px;
+}*/
+
+/*#main-menu-links li {
+  padding: 0px;
+  margin: 0px;
+}
+
+#main-menu-links li a.active, #main-menu-links a:hover {
+  background: #728302;
+}*/
+
+/*#main-menu-links a {
+  height: 87px;
+  line-height: 87px;
+  background: #a1b70d;
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 200;
+  font-family: 'Quicksand-Light' ,'Josefin Sans', sans-serif;
+  /*background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 1)));
+}*/

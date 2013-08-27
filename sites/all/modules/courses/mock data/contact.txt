@@ -1,0 +1,8 @@
+CAMPUS_ID|CN|OU|EDUPERSONPRIMARYAFFILIATION|TITLE|POSTALADDRESS|POSTOFFICEBOX|TELEPHONENUMBER|MAIL|DISPLAYNAME
+0111768|William Willimon|Preaching|faculty|Lecturer, Univ|129 Bryan Center$Durham, NC 27708|Box 90680$Durham, NC 277080680|+1 919 660 3341|willimonw@duke.edu|William Willimon
+0330154|Mohamed A Noor|Biology|faculty|Lecturer, Univ|136 Bryan Center$Durham, NC 27708|Box 90135$Durham, NC 277080680|+1 919 660 3341|noorm@duke.edu|Mohamed A Noor
+0283919|Erdag M Goknar|Ses|faculty|Lecturer, Univ|278 Bryan Center$Durham, NC 27708|Box 135815$Durham, NC 277080680|+1 919 660 3341|goknare@duke.edu|Erdag M Goknar
+0569312|Lindsey W Smith|Writing|faculty|Lecturer, Univ|168 Bryan Center$Durham, NC 27708|Box 16912$Durham, NC 277080680|+1 919 660 3341|smithl@duke.edu|Lindsey W Smith
+456|Zachary Burk||student||235 Bryan Center$Durham, NC 27708|Box 247902$Durham, NC 277080680|+1 919 660 3341|burkz@duke.edu|Zach Burk
+0056466|Lorna Mars|Dean|faculty||617 Bryan Center$Durham, NC 27708|Box 31780$Durham, NC 277080680|+1 919 660 3341|marsl@duke.edu|Lorna Mars
+0326548|Susan Alberts|Advising|faculty||892 Bryan Center$Durham, NC 27708|Box 13690$Durham, NC 277080680|+1 919 660 3341|albertss@duke.edu|Susan Alberts

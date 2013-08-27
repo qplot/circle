@@ -1,0 +1,3 @@
+CAMPUS_ID|CN|OU|EDUPERSONPRIMARYAFFILIATION|TITLE|POSTALADDRESS|POSTOFFICEBOX|TELEPHONENUMBER|MAIL|DISPLAYNAME
+0446203|Sumathi Ramaswamy|History|faculty|Professor|Dept of History, 226 Carr Bldg$BOX_90719$Durham, NC 27708||+1 919 684 2343|sumathi.ramaswamy@duke.edu|Sumathi Ramaswamy, Ph.D.
+0310344|Helen Gordon|Son-Faculty and Staff|faculty|Assist Clinical Prof|307 Trent Drive$School of Nursing Rm 2009$Durham, NC 27710|307 Trent Drive$DUMC 3322$Durham, NC 27710|+1 919 684 3786||Helen Gordon

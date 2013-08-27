@@ -1,0 +1,58 @@
+/*border colors*/
+.Faculty {
+  border: 8px solid #a2b712 !important;
+}
+
+.Instructor {
+  border: 8px solid #0736a4 !important;
+}
+
+/* instructor.tpl.php & circle.tpl.php */
+#wrappercir { width: 800px; margin: 0px 0px 0px -100px; /*border: 1px solid red; height: 400px;*/ }
+#wrappercir h1 { font-size: 24pt; color: #001a57; text-align: center; }
+#containercir { width: auto; height: 640px; position: relative; margin: 0px 0px 0px 0px; /*border: 1px solid green;*/}
+#centercir { width: 150px; height: 150px; position: absolute; left: 317px; top: 220px; overflow: hidden; border: 8px solid #ccc; border-radius: 79px; -webkit-border-radius: 79px; -moz-border-radius: 79px; behavior: url(../pie/PIE.htc); }
+#centercir a:hover { opacity: .7; }
+#centercir img {width: 150px; height: 150px;}
+.fieldcir { width: 150px; height: 165px; position: absolute; text-align: center; }
+.fieldcir .advisor-thumbcir { width: 105px; height: 105px; overflow: hidden; /*border: 8px solid #ccc;*/ margin: 0 12px; border-radius: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; behavior: url(../pie/PIE.htc); }
+.fieldcir .advisor-thumbcir a:hover { opacity: .7; }
+.fieldcir .advisor-thumbcir img {width: 105px; height: 105px;}
+.fieldcir .namecir { font-size: 9.5pt; font-weight: 900; color: #001a57}
+.fieldcir .titlecir { font-size: 8.5pt; font-style: normal;}
+.profile img {width: 150px;}
+
+/* instructor.tpl.php-All */
+.show-hide-links {
+  float: right;
+  margin-top: -20px;
+  font-family: Arial, sans-serif;
+}
+.wrapper1 { width: 800px; margin: 0px 0px 0px -100px; /*border: 1px solid red; height: 400px;*/ }
+.wrapper1 h1 { font-size: 24pt; color: #001a57; text-align: center; }
+.container1 { width: auto; height: 640px; position: relative; margin: 40px 0px 0px 0px; /*border: 1px solid green;*/}
+.center1 { width: 150px; height: 150px; position: absolute; left: 317px; top: 228px; overflow: hidden; border: 8px solid #bbbbbb; border-radius: 79px; -webkit-border-radius: 79px; -moz-border-radius: 79px; behavior: url(../pie/PIE.htc); }
+.center1 a:hover { opacity: .7; }
+.center1 img {width: 150px; height: 150px;}
+.fieldcir .advisor-thumbsmall { width: 105px; height: 105px; overflow: hidden; border: 8px solid #ccc; margin: 0px auto 0px auto; border-radius: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; behavior: url(../pie/PIE.htc); } 
+.fieldcir .advisor-thumbsmall a:hover { opacity: .7; }
+.fieldcir .advisor-thumbsmall img {width: 90px; height: 90px;}
+.fieldcir .namesmall { font-size: 9pt; font-weight: 900; color: #001a57}
+.fieldcir .titlesmall { font-size: 8pt; font-style: normal;}
+
+
+/* instructor.tpl.php-Instructors */
+.field1 { width: 130px; height: 150px; position: absolute; text-align: center;}
+.field1 .advisor-thumbsmall { width: 105px; height: 105px; overflow: hidden; border: 8px solid #ccc; margin: 0px auto 0px auto; border-radius: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; behavior: url(../pie/PIE.htc); } 
+.field1 .advisor-thumbsmall img {width: 90px; height: 90px;}
+.field1 .advisor-thumbsmall a:hover { opacity: .7; }
+.field1 .namesmall { font-size: 9pt; font-weight: 900; color: #001a57}
+.field1 .titlesmall { font-size: 8pt; font-style: normal;}
+
+/* instructor.tpl.php-Advisors */
+.field2 { width: 130px; height: 150px; position: absolute; text-align: center;}
+.field2 .advisor-thumbsmall { width: 105px; height: 105px; overflow: hidden; border: 8px solid #ccc; margin: 0px auto 0px auto; border-radius: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; behavior: url(../pie/PIE.htc); } 
+.field2 .advisor-thumbsmall img {width: 90px; height: 90px;}
+.field2 .advisor-thumbsmall a:hover { opacity: .7; }
+.field2 .namesmall { font-size: 9pt; font-weight: 900; color: #001a57}
+.field2 .titlesmall { font-size: 8pt; font-style: normal;}

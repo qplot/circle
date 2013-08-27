@@ -1,0 +1,30 @@
+CAMPUS_ID|CN|OU|EDUPERSONPRIMARYAFFILIATION|TITLE|POSTALADDRESS|POSTOFFICEBOX|TELEPHONENUMBER|MAIL|DISPLAYNAME
+0446203|Sumathi Ramaswamy|History|faculty|Professor|Dept of History, 226 Carr Bldg$BOX_90719$Durham, NC 27708||+1 919 684 2343|sumathi.ramaswamy@duke.edu|Sumathi Ramaswamy, Ph.D.
+0310344|Helen Gordon|Son-Faculty and Staff|faculty|Assist Clinical Prof|307 Trent Drive$School of Nursing Rm 2009$Durham, NC 27710|307 Trent Drive$DUMC 3322$Durham, NC 27710|+1 919 684 3786|helen.gordon@duke.edu|Helen Gordon
+0115073|Benjamin Ward|Department of Philosophy|staff|Assoc Dean for Student Dev|09E West Duke Bldg$Durham, NC  27708|Box 90743$Durham, NC 277080743|+1 919 660 3139|bfw@duke.edu|Benjamin F. Ward, Ph.D.
+0385237|Hannah N Rozear|Lib-Research Svcs|staff|Assist Librarian, Senior|Box 90175$Perkins 233$Durham, NC 27708|Box 90175$Durham, NC 27708|+1 919 660 5368|hannah.rozear@duke.edu|Hannah Rozear
+0147294|Catherine Shreve|Lib-Research Svcs|staff|Librarian for Public Policy & Political Science|233 Perkins Library$Durham, NC 27708|Box 90175$Durham, NC 277080175|+1 919 660 6934|catherine.shreve@duke.edu|Catherine Shreve
+0200761|Simon Partner|History|faculty|Professor|303 Carr Bldg$Durham, NC 27708|Box 90719$Durham, NC 277080719|+1 919 684 5464|spartner@duke.edu|Dr Simon Partner, Ph.D.
+0064319|Charles Thompson|Documentary Studies - Sub|faculty|Lecturer, Univ|1317 W Pettigrew St$Durham, NC 27705|Box 90802$Durham, NC 277080802|+1 919 660 3657|cdthomps@duke.edu|Charles Thompson Jr., Ph.D.
+0284355|Danette Pachtner|Lib-Lilly|staff|Librarian for Film, Video, & Digital Media|108 Lilly Library$116 Campus Drive$Durham, NC 27708|Box 90725$Lilly Library$Durham, NC 277080725|+1 919 660 5886|danette.p@duke.edu|Danette Pachtner
+0266997|Christopher Roy|Chemistry|faculty|Lecturer, Univ|1222 French Family Science Center$124 Science Drive$Durham, NC 27708|Box 90346$Durham, NC 27708-0346|+1 919 660 1518|chris.roy@duke.edu|Christopher Roy, Ph.D.
+0516491|Hwansoo Kim|Religion|faculty|Assist Professor|118 Gray Bldg$Durham, NC 27708|Box 90964$Durham, NC 277080964|+1 919 660 3500|hwansoo.kim@duke.edu|Hwansoo Kim, Ph.D.
+0550401|Ciara Healy|Lib-Research Svcs|staff|Assoc Librarian||Perkins Library 233$Box 90175$Durham, NC 27708|+1 919 660 5829|ciara.healy@duke.edu|Ciara Healy
+0099730|Kristina K Troost|History Department|staff|Adjunct Asst Prof of History|Bostock 228$Perkins Library$Durham, NC 27708-0195|Box 90195$Perkins Library$Durham, NC 27708-0195|+1 919 660 5844|kristina.troost@duke.edu|Kristina Troost, Ph.D.
+0446020|John Martin|History|faculty|Professor|323A Carr Bldg.$114 Campus Drive$Durham, NC 27708|Box 90719$Duke University$Durham, NC 277080719|+1 919 681 5499|john.j.martin@duke.edu|John J. Martin
+0312329|Kerry R McCarthy|Music|faculty|Associate Professor|059 Mary Duke Biddle Bldg$Durham, NC  27710|Box 90665$Durham, NC 277080665|+1 919 660 3370|kerryr.mccarthy@duke.edu|Kerry McCarthy, Ph.D.
+0486302|Patrick Charbonneau|Chemistry|faculty|Assist Professor|5329 French Science$Box 90347$Durham, NC 27708|Box 90347$Durham, NC 277080347|+1 919 613 6261|patrick.charbonneau@duke.edu|Patrick Charbonneau, Ph.D.
+0068024|Adelheid H. Madden|Lib-Ias|staff|Librarian for Western European Studies|232 Bostock Library$Durham, NC 27708|Box 90195$Durham, NC 277080195|+1 919 660 5984|heidi.madden@duke.edu|Heidi Madden, Ph.D.
+0097070|Zbigniew Kabala|Civil and Environmental Engineering|faculty|Associate Professor|Ciemas 2467$Durham, NC 27708|Box 90287$Durham, NC 277080287|+1 919 660 5479|zbigniew.kabala@duke.edu|Zbigniew Kabala, Ph.D.
+0300051|Greta Boers|Lib-Lilly|staff|Coordinator, First-Year Library Instruction||Lilly Library$Box 90725$Durham, NC 27708|+1 919 660 5864|greta.boers@duke.edu|Greta Boers
+0386178|Rachel Ariel|Lib-Ias|staff|Librarian for Judaica/Hebraica|232 Bostock Library$Durham, NC 27708|Box 90195$Durham, NC 277080195|+1 919 660 5842|rachel.ariel@duke.edu|Rachel Ariel
+0441379|Michael Peper|Lib-Research Svcs|staff|Librarian for Mathematics & Physics|233 Perkins Library$Durham, NC 27708|Box 90175$Durham, NC 277080175|+1 919 660 5926|michael.peper@duke.edu|Michael Peper
+0111644|Kelley Lawton|Lib-Lilly|staff|Head, Lilly Library|1348 Campus Dr.$Lilly Library$Durham, NC 27708|Box 90725$Durham, NC 277080725|+1 919 660 5990|kelley.lawton@duke.edu|Kelley Lawton
+0025641|Carson Holloway|Lib-Lilly|staff|Reference/Instruction Librarian, Perkins & Lilly|Lilly Library$Durham, NC  27708|Duke Box 90725$Durham, NC 27708|+1 919 660 5997|carson.holloway@duke.edu|Carson Holloway
+0295180|Stephanie Ford|Lib-Research Svcs|staff|Evening Reference Librarian & Supervisor|109 Perkins$Durham, NC 27708|Box 90192$Durham, NC 277080192|+1 919 660 5876|stephanie.ford@duke.edu|Stephanie Ford
+0222718|William Munden|Lib-Lilly|staff|Evening Reference Librarian & Supervisor|108 Lilly Library$1348 Campus Drive$Durham, NC 27708|Box 90725$Durham, NC 277080725|+1 919 660 9465|dave.munden@duke.edu|Dave Munden
+0114493|Lee Sorensen|Lib-Lilly|staff|Arts Bibliographer, Reference Librarian|Lilly Library$Durham, NC  27708|Box 90727$Durham, NC 277080727|+1 919 660 5994|lslilly@duke.edu|Lee Sorensen
+0203268|Laura Williams|Lib-Music|staff|Assist Librarian, Senior|Music Library$113 Biddle Bldg$Durham, NC 27708|Box 90661$Durham, NC 277080187|+1 919 660 5952|laura.williams@duke.edu|Laura Williams
+0274493|John Brown|Music|faculty|Assoc Prof of the Prac of|Biddle Music Building$Office 064$Durham, NC  27708|Box 90665$Durham, NC 277080665|+1 919 660 3385|jbrown@duke.edu|John V. Brown
+0023985|Anthony Kelley|Music|faculty|Assoc Prof of the Prac of|07A Biddle Music Bldg$Durham, NC 27708|Box 90665$Durham, NC 277080665|+1 919 660 3328|antk@duke.edu|Dr Anthony Kelley, Ph.D.
+0115996|Hsiao-Mei Ku|Music|faculty|Professor of Practice|082 Mary Duke Biddle$Durham, NC  27708|Box 90665$Durham, NC  27708-0665|+1 919 660 3329|hmku@duke.edu|Hsiao-Mei Ku

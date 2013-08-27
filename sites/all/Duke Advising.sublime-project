@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": "themes/circle"
+		},
+		{
+			"path": "modules/courses"
+		},
+		{
+			"path": "modules/gate"
+		}
+	]
+}

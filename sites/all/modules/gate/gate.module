@@ -1,0 +1,161 @@
+<?php
+/**
+ * @file
+ * Code for the gate feature.
+ */
+
+
+/**
+ * hook menu
+ */
+function gate_menu() {
+  $items = array();
+  // $items['shib'] = array(
+  //   'title' => 'Shib Settings',
+  //   'description' => 'Shib Settings',
+  //   'page callback' => 'drupal_get_form',
+  //   'page arguments' => array('shib_settings'),
+  //   'access callback' => TRUE,
+  //   'type' => MENU_CALLBACK,
+  // );
+  $items['gate']  = array(
+    'title' => 'Gate Front Page',
+    'description' => '',
+    'page callback' => 'gate_gate',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );  
+  $items['yup']  = array(
+    'title' => 'Gate Front Page',
+    'description' => '',
+    'page callback' => 'gate_yup',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );  
+  $items['nope']  = array(
+    'title' => 'Gate Front Page',
+    'description' => '',
+    'page callback' => 'gate_nope',
+    'page arguments' => array(),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+
+// function shib_settings() {
+//   $form['switch'] = array(
+//     '#type' => 'radios',
+//     '#title' => t('Switch On/Off'),
+//     '#options' => array(t('On'),t('Off')),
+//     '#description' => t('Turn Shib on or off'),
+//     '#default_value' => variable_get('shib_switch', 1),
+//   );
+//   $form['submit'] = array(
+//     '#type' => 'submit',
+//     '#value' => 'Submit',
+//   );
+//   return $form;
+// }
+
+// function shib_settings_submit($form, &$form_state) {
+//   variable_set("shib_switch",$form_state['values']['switch']);
+  
+//   // $switch_set = $form_state['values']['switch'];
+
+//   // return $switch_set;
+//   drupal_set_message(t("Shib has been turned on/off"));
+//   //variable_set("shib",'0');
+// }
+
+function gate_gate() {
+  
+  //$getshib = variable_get('shib_switch');
+
+  //if($getshib==0) 
+
+  
+
+    
+
+
+    // $gate_query = "SELECT * FROM `field_revision_field_user_campusid` WHERE `field_user_campusid_value`='$fake_shib'";
+
+    // $gate_result = mysql_query($gate_query);
+    // if(mysql_num_rows($gate_result) == 0) {
+    //     echo "Campus ID does not exist!";
+
+    //   } else {
+
+    //     echo "Campus ID DOES exist!";
+    //       //now, check if CAMPUS ID exist in either student or faculty, if does, GOTO 
+
+
+    //   }
+
+    //echo "$gate_result";
+$fake_shib = ''; 
+
+
+$efq = new EntityFieldQuery();
+  $result = $efq->entityCondition('entity_type', 'user')
+  ->propertyCondition('name', $fake_shib)
+  ->execute();
+
+if (!empty($result)) {
+
+//echo "Person: $fake_shib exists in our system!";
+
+  $efq1 = new EntityFieldQuery();
+  $result1 = $efq1->entityCondition('entity_type', 'node')
+  ->propertyCondition('type', 'housing')
+  ->propertyCondition('title', $fake_shib)
+  ->execute();
+
+    if(!empty($result1)) {
+
+
+        variable_set("fake_shib",$fake_shib);
+        variable_set("duketype",'student');
+        drupal_goto('mycircle');
+
+        //THIS MEANS CAMPUS ID IS A STUDENT
+
+    } 
+
+    if(empty($result1)) {
+
+      // THIS MEANS CAMPUS ID IS A FACULTY....
+      variable_set("fake_shib",$fake_shib);
+      variable_set("duketype",'faculty');
+      drupal_goto('myfaculty');
+
+    } else {}
+
+
+
+//THIS MEANS NO CAMPUS ID OR SHIB VAR VALUE IN OUR SYSTEM...
+
+drupal_goto('<front>');
+
+
+}
+}
+
+function gate_yup() {
+
+  echo "Yes, that Campus ID is in our system!";
+
+
+}
+
+
+function gate_nope() {
+
+  echo "No, that Campus ID does not exist in our system!";
+
+}

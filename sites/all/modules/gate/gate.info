@@ -1,0 +1,5 @@
+name = Gate
+core = 7.x
+package = Gate
+version = 7.x-1.8
+project = gate

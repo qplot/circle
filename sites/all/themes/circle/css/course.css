@@ -1,0 +1,93 @@
+.view-course-view .view-content .course {
+	border: 1px solid #000;
+	background: #eee;
+	margin-bottom: 10px;
+	overflow: hidden;
+	font-family: Arial, sans-serif;
+}
+
+/* Course Left */
+.view-course-view .view-content .item-list .node-teaser {
+	border-bottom: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.view-course-view .view-content .field-items {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.view-course-view .view-content .course-left {
+	float: left;
+	width: 60%;
+	display: block;
+	/*height: 260px;*/
+	position: relative;
+	/*border: 1px solid #082;*/
+	padding-bottom: 500em;
+	margin-bottom: -500em;
+}
+
+.view-course-view .view-content .info {
+	float: right;
+	font-size: 0.8em;
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+.view-course-view .view-content .title a {
+	float: left;
+	margin-left: 25px;
+	margin-top: 13px;
+	font-size: 1.8em;
+	font-weight: bold;
+	text-transform: capitalize;
+	text-decoration: none;
+	color: #000;
+}
+
+.view-course-view .view-content ul {
+	list-style: none;
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	padding-bottom: 0px;
+}
+
+.view-course-view .view-content .professors ul  li {
+	display: inline-block;
+	font-size: 0.8em;
+	clear: both;
+	text-align: center;
+	padding: 0px 10px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	line-height: auto;
+}
+
+.view-course-view .view-content .professors ul  li h2{
+	margin-top: 0px;
+	line-height: auto;
+}
+
+.view-course-view .view-content .enrolled {
+	font-size: 0.85em;
+	float: right;
+	padding-bottom: 5px;
+	left: 88%;
+	width: 90px;
+}
+
+/* Course Right */
+.view-course-view .view-content .course-right {
+	background: #fff;
+	display: block;
+	width: 35%;
+	/*height: 248px;*/
+	float: right;
+	margin: 5px 5px -500em 0px;
+	padding: 5px 5px 500em 8px;
+	font-size: 1em;
+}
+

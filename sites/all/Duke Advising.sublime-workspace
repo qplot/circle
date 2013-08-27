@@ -1,0 +1,655 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"variabl",
+				"variable_get"
+			],
+			[
+				"vari",
+				"variable_get"
+			],
+			[
+				"varial",
+				"variable_set"
+			],
+			[
+				"variable_",
+				"variable_set"
+			],
+			[
+				"current",
+				"currentsetting"
+			],
+			[
+				"settings",
+				"settings"
+			],
+			[
+				"campus",
+				"campus_id"
+			],
+			[
+				"studen",
+				"studentName"
+			],
+			[
+				"Instu",
+				"instructors"
+			],
+			[
+				"st",
+				"staff"
+			],
+			[
+				"field_field_user_cam",
+				"field_field_user_campusid_1"
+			],
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"temp",
+				"template"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"field_field_user_disp",
+				"field_field_user_displayname_1"
+			],
+			[
+				"end",
+				"endforeach"
+			],
+			[
+				"te",
+				"text-transform"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"backg",
+				"background"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"mart",
+				"margin-right"
+			],
+			[
+				"d",
+				"dotted"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"In",
+				"InstructorID"
+			],
+			[
+				"Ad",
+				"Advisor"
+			],
+			[
+				"ins",
+				"instructor"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"Ins",
+				"Instructors"
+			],
+			[
+				"courses_find",
+				"courses_find_librarians"
+			],
+			[
+				"taxonomy_",
+				"taxonomy_get_term_by_name"
+			],
+			[
+				"res",
+				"residence"
+			],
+			[
+				"Dea",
+				"DeanID"
+			],
+			[
+				"Adv",
+				"AdvisorID"
+			],
+			[
+				"array_m",
+				"array_merge"
+			],
+			[
+				"field_field",
+				"field_field_user_full_name_2"
+			],
+			[
+				"camp",
+				"campid"
+			],
+			[
+				"campu",
+				"campud_id"
+			],
+			[
+				"field_field_c",
+				"field_field_class_days"
+			],
+			[
+				"Inst",
+				"InstructorID"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"stu",
+				"students"
+			],
+			[
+				"courses_find_",
+				"courses_find_instructors2"
+			],
+			[
+				"cam",
+				"campid"
+			],
+			[
+				"course_find_",
+				"courses_find_course"
+			],
+			[
+				"in",
+				"instructor"
+			],
+			[
+				"student",
+				"student_name"
+			],
+			[
+				"cours",
+				"courses"
+			],
+			[
+				"field_field_class_",
+				"field_field_class_instructorid"
+			],
+			[
+				"Cou",
+				"CourseName"
+			],
+			[
+				"en",
+				"endforeach"
+			],
+			[
+				"I",
+				"InstructorID"
+			],
+			[
+				"view",
+				"viewc"
+			],
+			[
+				"exe",
+				"execute"
+			],
+			[
+				"views",
+				"views_get_view"
+			],
+			[
+				"Instr",
+				"InstructorProfile"
+			],
+			[
+				"Quick",
+				"Quicksand-Light"
+			],
+			[
+				"main",
+				"main-menu-links"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"visi",
+				"visibility"
+			],
+			[
+				"var",
+				"var_dump"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Users/zburk/drush-backups/archive-dump/20130822203450/drush.20130822_203451/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Users/zburk/drush-backups/archive-dump/20130822170104/drush.20130822_170105/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Users/zburk/drush-backups/archive-dump/20130822191946/drush.20130822_191947/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Users/zburk/drush-backups/archive-dump/20130822193801/drush.20130822_193801/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Users/zburk/drush-backups/archive-dump/20130822203450/drush.20130822_203451/drupal-7.22/sites/all/modules/courses/circle.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/circle.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/gate/gate.module",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/contact.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/page--front.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/instructors.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/page.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/advisors",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/housing",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/roster",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/contact.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/contact(3).csv",
+		"/Volumes/Data/QPLOT Dropbox/Circle/THeme/cmenu.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/roster.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/advisors.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/housing.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/layout.css",
+		"/Users/zburk/Downloads/courses/courses.ds.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/style.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/custom_css.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/libraries/superfish/style/simple/simple.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/main-menu.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--block--3.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/themes/bartik/templates/page.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/template.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/circles.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/classes.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/classes.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/housing.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Final Files/residence.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/residence.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/roster(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Zachs Testing Data/advisors.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/residence.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/comments.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/for-advisors.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--menu--menu-footer-center-links.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--menu--menu-footer-left-links.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/modules/block/block.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--menu--menu-footer-right-links.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--block--5.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/modules/block/block.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/test.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/classes.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/contact.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/housing.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/roster(1000).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/roster.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/mock data/housing(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/feeds_tamper/plugins/email.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/Final Files/advisors.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/contact(test).txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/feeds_tamper/plugins/explode.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/contact.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/feeds_tamper/plugins/convert_case.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/feeds_tamper/plugins/rewrite.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/feeds_tamper/plugins/custom.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/contact2.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/contact test.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/test.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster(1200).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/advisors.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster(100).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster(20).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/roster.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/circle.info",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/js/jquery.fancybox.js",
+		"/Users/zburk/Downloads/contact.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/roster",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/mock data/roster.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--block--4.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/region--footer-fourthcolumn.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--block--1.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--block--2.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/region--footer-secondcolumn.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/block--menu--menu-useful-links.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/region--footer-firstcolumn.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/modules/block/block.admin.inc",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/themes/bartik/css/layout.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/mock data/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/mock data/contact.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/untitled.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/users(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/users.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/colors.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/course.css",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/courses.info",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/housing.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/classes(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/if statements",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/advisors.tpl.php",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/js/circles_view.js",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/css/.htaccess",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/advisors(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/housing(1).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/librarian.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/testing data/users.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/housing(100).csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/housing.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/test/circle.tpl.php",
+		"/Volumes/ZACH BURK/Qplot/Import files/advisors.csv",
+		"/Volumes/ZACH BURK/Qplot/Import files/users.csv",
+		"/Volumes/ZACH BURK/Qplot/Import files/advisors(1).csv",
+		"/Volumes/ZACH BURK/Qplot/Import files/housing.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/js/window-openclose.js",
+		"/Volumes/ZACH BURK/Qplot/sim_file/classes_sim.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/classes.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/modules/courses/import files/class.csv",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/default/settings.php",
+		"/Volumes/ZACH BURK/Qplot/sim_file/roster_sim.txt",
+		"/Applications/MAMP/htdocs/Work/Active/drupal-7.22/sites/all/themes/circle/templates/Circle Blocks/page--50--small.tpl.php",
+		"/Applications/MAMP/htdocs/drupal-7.22/sites/all/themes/circle/templates/page--front.tpl.php",
+		"/Applications/MAMP/htdocs/drupal-7.22/sites/all/modules/courses/circle.tpl.php",
+		"/Volumes/ZACH BURK/Qplot/changed.txt",
+		"/Volumes/ZACH BURK/sim_file/users_sim.csv",
+		"/Applications/MAMP/htdocs/drupal-7.22/sites/all/modules/courses/courses.module",
+		"/Applications/MAMP/htdocs/drupal-7.22/sites/all/modules/courses/import files/users.csv"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Wang, Yi",
+			"pic",
+			"course_settings",
+			"drupal_get",
+			"0604917",
+			"0618810",
+			"?>>",
+			"?>> ",
+			"?>>",
+			"shib",
+			"links",
+			"front",
+			"header",
+			"header-links",
+			"header",
+			"arg(1)",
+			"arg",
+			"studentname",
+			"arg",
+			"class=\"shrink\"",
+			"shrink",
+			"centersmall",
+			"center",
+			"container2",
+			"wrapper2",
+			"center1",
+			"fieldc",
+			"name",
+			"namecirname",
+			"namecir",
+			"cir",
+			"center",
+			"centersmall",
+			"center",
+			"cetner",
+			"center",
+			"centercir",
+			"enrolled",
+			"$secondary",
+			"header",
+			"ul.menu",
+			"ul.men",
+			"front",
+			"<?=",
+			"logo",
+			"links",
+			"margin",
+			"title",
+			"<?=",
+			"2720",
+			"advising",
+			"wilson",
+			"0385237",
+			"show",
+			"south",
+			"0527384",
+			"0550002",
+			"90195",
+			"0099730",
+			"@",
+			"0099730",
+			"0589791",
+			"0550058",
+			"0606547",
+			"0612125",
+			"0629121",
+			"0551358",
+			"0550002",
+			"courses_settings",
+			"stu",
+			"@",
+			"^\\n",
+			"0527384",
+			"^\\n",
+			"0550058",
+			"0550002",
+			"raffa",
+			"giar",
+			"0200761",
+			"0486302",
+			"after",
+			"before",
+			"after",
+			"librarian",
+			"closeBtn",
+			"close",
+			".png",
+			"sprite",
+			"student",
+			"0230964",
+			"0203908",
+			"student",
+			"0550058",
+			"student",
+			"0550002",
+			"advising",
+			"student",
+			"content",
+			"h1",
+			"btn",
+			"h1",
+			".title",
+			"h1.title",
+			"h2",
+			".title",
+			"h1.title",
+			"h1",
+			"content",
+			"courses_find_instructors2",
+			"studentname",
+			"logo",
+			"shrink",
+			"middle",
+			"last",
+			"height",
+			"content",
+			"menu",
+			"clearfix",
+			"block",
+			"block-system",
+			"small",
+			"student",
+			"310",
+			"housing",
+			"courses_feeds_presave",
+			"quad",
+			"central",
+			"crowell"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"<?php echo ",
+			"<?php echo",
+			"<?php ",
+			"",
+			"\n",
+			"",
+			"|",
+			"simple-arrows(white)",
+			"simple-arrows-rtl(white)",
+			"",
+			"|",
+			"hover",
+			"small",
+			".cirins"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 180.0,
+	"status_bar_visible": true
+}

@@ -1,0 +1,68 @@
+#wrappercir { width: 800px; margin: 0px 0px 0px -100px; /*border: 1px solid red; height: 400px;*/ }
+#wrappercir h1 { font-size: 24pt; color: #001a57; text-align: center; }
+#containercir { width: auto; height: 640px; position: relative; margin: 0px 0px 0px 0px; /*border: 1px solid green;*/}
+#centerhover { width: 150px; height: 150px; position: absolute; left: 317px; top: 220px; overflow: hidden; border: 8px solid #ccc; border-radius: 79px; -webkit-border-radius: 79px; -moz-border-radius: 79px; behavior: url(../pie/PIE.htc); opacity: 0.7;}
+#centerhover:hover {
+  /*transform: rotate(5deg);
+  -ms-transform: rotate(5deg); /* IE 9 
+  -webkit-transform: rotate(5deg); /* Safari and Chrome 
+  -o-transform: rotate(5deg); /* Opera 
+  -moz-transform: rotate(5deg); /* Firefox */
+  opacity: 1.0;
+}
+
+/*#centerhover a:hover { opacity: 0.7; }*/
+.fieldcir { width: 160px; height: 180px; position: absolute; text-align: center;}
+.fieldcir .advisor-thumbhover { width: 120px; height: 120px; overflow: hidden; border: 8px solid #ccc; margin: 0px auto 0px auto; border-radius: 64px; -webkit-border-radius: 64px; -moz-border-radius: 64px; behavior: url(../pie/PIE.htc); opacity: 0.7;}
+.fieldcir .advisor-thumbhover:hover {
+  /*transform: rotat(5deg);
+  -ms-transform: rotate(5deg); /* IE 9 
+  -webkit-transform: rotate(5deg); /* Safari and Chrome 
+  -o-transform: rotate(5deg); /* Opera 
+  -moz-transform: rotate(5deg); /* Firefox */
+  opacity: 1.0;
+}
+/*.fieldcir .advisor-thumbhover a:hover { opacity: .7; }*/
+.fieldcir .namehover { font-size: 9pt; font-weight: 900; color: #001a57; opacity: 0;}
+.fieldcir:hover .namehover { 
+  opacity: 1.0;
+  -webkit-transition: opacity 250ms ease-in;
+  -moz-transition: opacity 250ms ease-in;
+  -o-transition: opacity 250ms ease-in;
+  -ms-transition: opacity 250ms ease-in;
+  transition: opacity 250ms ease-in;
+}
+.fieldcir .titlehover { font-size: 8pt; font-style: italic; opacity: 0;}
+.fieldcir:hover .titlehover {   
+  opacity: 1.0;
+  -webkit-transition: opacity 250ms ease-in;
+  -moz-transition: opacity 250ms ease-in;
+  -o-transition: opacity 250ms ease-in;
+  -ms-transition: opacity 250ms ease-in;
+  transition: opacity 250ms ease-in;
+}
+
+
+/*border colors*/
+/*.hoveradmin {
+  border: 8px solid #a2b712;
+}
+.hoverins {
+  border: 8px solid #001A57;
+}
+.hoverstudent {
+  border: 8px solid #ebb645;
+}*/
+
+/*inline elements*/
+.profile h2 { font-size: 20pt; color: #001a57; }
+.profile h3 { font-size: 16pt; color: #235f9c; margin-bottom: 12px; font-style: italic; }
+.profile h4 { font-size: 14pt; color: #728302; margin-bottom: 12px; }
+.profile p { margin-bottom: 12px; }
+.profile ul { list-style-type: square; margin: 0 0 12px 12px; }
+.profile ul li { margin: 0 0 8px 8px; padding: 0 0 0 8px; font-size: 12pt; }
+.profile img { float: right; margin: 0 0 10px 20px; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; behavior: url(../pie/PIE.htc); }
+.profile a { color: #001a57; }
+.profile  strong { font-weight: 900; }
+.profile em { font-style: italic; text-transform: capitalize; }
+.profile span.classTitle { text-transform: capitalize; }
