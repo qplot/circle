@@ -44,6 +44,7 @@
  * @ingroup themeable
  */
 ?>
+<!--
 <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> links"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
       <strong>DOMESTIC</strong><br>
@@ -55,3 +56,4 @@
       <a href="mailto:undergrad-admissions@duke.edu">undergrad-admissions@duke.edu</a><br>
   </div>
 </div>
+-->

@@ -44,6 +44,12 @@ class FeedsUserProcessor extends FeedsProcessor {
 
     // Copy the password so that we can compare it again at save.
     $user->feeds_original_pass = $user->pass;
+    
+    if ($this->config['update_existing'] == FEEDS_REPLACE_EXISTING) {
+      $user->roles = array_filter($this->config['roles']);
+      $user->status = $this->config['status'];
+    }
+
     return $user;
   }
 

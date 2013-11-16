@@ -1,33 +1,38 @@
 <?php 
 
 function circle_preprocess_node(&$var) {
-  //  kpr($var);
+//print('123');
+  //dsm('123');
   // getting campus id from third argument from URL
   $campus_id = arg(2);
   // get campus id from login user campus id field
-  // dsm(arg(0)); // displays "node"
-  // dsm(arg(1)); // displays node id
-  // dsm(arg(2)); // displays campus id
+   //dsm(arg(0)); // displays "node"
+   //dsm(arg(1)); // displays node id
+   //dsm(arg(2)); // displays campus id
 
   //dsm($campus_id);
   if(!empty($campus_id)) {
   $var['courses'] = courses_find_instructors2($campus_id);
-  // dsm($var['courses']);
+  //dsm($var['courses']);
+  //dsm('123');
   }
 
   else { // notices will pop up reguarding invalid arguments due to $courses not existing
     global $user;
+    //dsm($user);
     if (!empty($user->uid)) {
       $u = user_load($user->uid);
       //dsm($u);
       if (!in_array("administrator", $u->roles)) {
-      $campid = $u->field_user_campusid['und']['0']['value'];
+
+        if (isset($u->field_user_campusid['und']['0']['value']))
+          $campid = $u->field_user_campusid['und']['0']['value'];
       $var['courses'] = courses_find_instructors2($campid);
       // $role = $u->roles;
       //dsm($role);
       //dsm($campid);
       }
-    }
+    }  
   }
 }
 

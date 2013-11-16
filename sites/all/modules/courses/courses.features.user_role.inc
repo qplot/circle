@@ -10,10 +10,28 @@
 function courses_user_default_roles() {
   $roles = array();
 
-  // Exported role: instructor.
-  $roles['instructor'] = array(
-    'name' => 'instructor',
+  // Exported role: administrator.
+  $roles['administrator'] = array(
+    'name' => 'administrator',
+    'weight' => 2,
+  );
+
+  // Exported role: faculty.
+  $roles['faculty'] = array(
+    'name' => 'faculty',
+    'weight' => 5,
+  );
+
+  // Exported role: manager.
+  $roles['manager'] = array(
+    'name' => 'manager',
     'weight' => 3,
+  );
+
+  // Exported role: student.
+  $roles['student'] = array(
+    'name' => 'student',
+    'weight' => 4,
   );
 
   return $roles;

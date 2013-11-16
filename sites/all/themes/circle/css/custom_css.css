@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic|Noto+Serif:400,700,400italic,700italic);
+
 table.coursetable {
 /*  border: 1px solid #000;
   border-collapse: separate;*/
@@ -81,12 +83,17 @@ div.profile h3 {
 }
 
 #advising a{
+  background: transparent url('../images/my-advising-network.png') no-repeat 0 0;
+  font-family: 'Noto Sans', Arial, Verdana, sans-serif;
   color: #fff;
   position: absolute;
-  top: 20px;
-  left: 250px;
+  top: 25px;
+  left: 235px;
   font-size: 22px;
   text-transform: uppercase;
+  text-indent: 9999px;
+  overflow: hidden;
+  height: 38px;
 }
 
 #advising a:hover{
@@ -183,6 +190,9 @@ h1#front-title {
 .btn:hover {
   color: #fff;
 }
+
+.logged-in .btn {display:none;}
+
 .one-sidebar #front-content{
   width: 100%;
 }

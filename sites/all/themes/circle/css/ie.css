@@ -1,2 +1,2 @@
-#center img { width: 150px; height: 150px; overflow: hidden; border-radius: 76px; -webkit-border-radius: 76px; -moz-border-radius: 76px; behavior: url(pie/PIE.htc); }
-.field .advisor-thumb img { width: 120px; height: 120px; overflow: hidden; border-radius: 61px; -webkit-border-radius: 61px; -moz-border-radius: 61px; behavior: url(pie/PIE.htc); }
+#center img { width: 150px; height: 150px; overflow: hidden; border-radius: 76px; -webkit-border-radius: 76px; -moz-border-radius: 76px; behavior: url(/sites/all/themes/circle/pie/PIE.htc); }
+.field .advisor-thumb img { width: 120px; height: 120px; overflow: hidden; border-radius: 61px; -webkit-border-radius: 61px; -moz-border-radius: 61px; behavior: url(/sites/all/themes/circle/pie/PIE.htc); }

@@ -26,7 +26,7 @@ fields.each(function() {
 </head> -->
 
 <div id="wrapper">
-<h1>Advising Circle for Jane Q. Student</h1>
+<h1>Advising Network for Jane Q. Student</h1>
 <?php 
 	$path = "../" . drupal_get_path('theme', 'circle');
  ?>

@@ -32,14 +32,17 @@ function courses_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '21';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<?php
+  $handler->display->display_options['header']['area']['content'] = '<?php 
 print l(\'Add Advisor for Student\', \'node/add/advisors\', array(\'query\' => array(\'destination\' => \'advisor\')));
 print " | ";
 print l(\'Import Advisors\' , \'import/advisor_importer\', array(\'query\' => array(\'destination\' => \'advisor\')));
@@ -91,6 +94,13 @@ print " | ";
   $handler->display->display_options['fields']['field_user_displayname_1']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname_1']['relationship'] = 'field_advisors_advisor_target_id';
   $handler->display->display_options['fields']['field_user_displayname_1']['label'] = 'Advisor Name';
+  /* Field: User: Address */
+  $handler->display->display_options['fields']['field_user_address']['id'] = 'field_user_address';
+  $handler->display->display_options['fields']['field_user_address']['table'] = 'field_data_field_user_address';
+  $handler->display->display_options['fields']['field_user_address']['field'] = 'field_user_address';
+  $handler->display->display_options['fields']['field_user_address']['relationship'] = 'field_advisors_advisor_target_id';
+  $handler->display->display_options['fields']['field_user_address']['label'] = 'Advisor Address';
+  $handler->display->display_options['fields']['field_user_address']['delta_offset'] = '0';
   /* Field: Content: Dean Campus ID */
   $handler->display->display_options['fields']['field_advisors_dean_campusid']['id'] = 'field_advisors_dean_campusid';
   $handler->display->display_options['fields']['field_advisors_dean_campusid']['table'] = 'field_data_field_advisors_dean_campusid';
@@ -101,23 +111,28 @@ print " | ";
   $handler->display->display_options['fields']['field_user_displayname_2']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname_2']['relationship'] = 'field_advisors_dean_target_id';
   $handler->display->display_options['fields']['field_user_displayname_2']['label'] = 'Dean Name';
-  /* Field: Broken/missing handler */
+  /* Field: User: Photo */
   $handler->display->display_options['fields']['field_user_photo']['id'] = 'field_user_photo';
   $handler->display->display_options['fields']['field_user_photo']['table'] = 'field_data_field_user_photo';
   $handler->display->display_options['fields']['field_user_photo']['field'] = 'field_user_photo';
   $handler->display->display_options['fields']['field_user_photo']['relationship'] = 'field_advisors_advisor_target_id';
   $handler->display->display_options['fields']['field_user_photo']['exclude'] = TRUE;
-  /* Field: Broken/missing handler */
+  $handler->display->display_options['fields']['field_user_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: User: Photo */
   $handler->display->display_options['fields']['field_user_photo_1']['id'] = 'field_user_photo_1';
   $handler->display->display_options['fields']['field_user_photo_1']['table'] = 'field_data_field_user_photo';
   $handler->display->display_options['fields']['field_user_photo_1']['field'] = 'field_user_photo';
   $handler->display->display_options['fields']['field_user_photo_1']['relationship'] = 'field_advisors_dean_target_id';
   $handler->display->display_options['fields']['field_user_photo_1']['exclude'] = TRUE;
-  /* Field: User: Address */
-  $handler->display->display_options['fields']['field_user_address']['id'] = 'field_user_address';
-  $handler->display->display_options['fields']['field_user_address']['table'] = 'field_data_field_user_address';
-  $handler->display->display_options['fields']['field_user_address']['field'] = 'field_user_address';
-  $handler->display->display_options['fields']['field_user_address']['relationship'] = 'field_advisors_advisor_target_id';
+  $handler->display->display_options['fields']['field_user_photo_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo_1']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
@@ -141,7 +156,9 @@ print " | ";
   $handler->display->display_options['fields']['field_user_address_1']['id'] = 'field_user_address_1';
   $handler->display->display_options['fields']['field_user_address_1']['table'] = 'field_data_field_user_address';
   $handler->display->display_options['fields']['field_user_address_1']['field'] = 'field_user_address';
-  $handler->display->display_options['fields']['field_user_address_1']['relationship'] = 'field_advisors_advisor_target_id';
+  $handler->display->display_options['fields']['field_user_address_1']['relationship'] = 'field_advisors_dean_target_id';
+  $handler->display->display_options['fields']['field_user_address_1']['label'] = 'Dean Address';
+  $handler->display->display_options['fields']['field_user_address_1']['delta_offset'] = '0';
   /* Field: User: E-mail */
   $handler->display->display_options['fields']['mail_1']['id'] = 'mail_1';
   $handler->display->display_options['fields']['mail_1']['table'] = 'users';
@@ -161,6 +178,18 @@ print " | ";
   $handler->display->display_options['fields']['field_user_telephone_1']['field'] = 'field_user_telephone';
   $handler->display->display_options['fields']['field_user_telephone_1']['relationship'] = 'field_advisors_dean_target_id';
   $handler->display->display_options['fields']['field_user_telephone_1']['exclude'] = TRUE;
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting']['id'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['relationship'] = 'field_advisors_advisor_target_id';
+  $handler->display->display_options['fields']['field_user_photosetting']['exclude'] = TRUE;
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting_1']['id'] = 'field_user_photosetting_1';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['relationship'] = 'field_advisors_dean_target_id';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['exclude'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -295,16 +324,16 @@ print " | ";
   $handler->display->display_options['fields']['field_class_days']['field'] = 'field_class_days';
   $handler->display->display_options['fields']['field_class_days']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_class_days']['separator'] = ' ';
+  /* Field: User: Display Name */
+  $handler->display->display_options['fields']['field_user_displayname']['id'] = 'field_user_displayname';
+  $handler->display->display_options['fields']['field_user_displayname']['table'] = 'field_data_field_user_displayname';
+  $handler->display->display_options['fields']['field_user_displayname']['field'] = 'field_user_displayname';
+  $handler->display->display_options['fields']['field_user_displayname']['relationship'] = 'field_class_instructorid_target_id';
+  $handler->display->display_options['fields']['field_user_displayname']['label'] = 'Instructor Name';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_user_full_name']['id'] = 'field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['table'] = 'field_data_field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['field'] = 'field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['relationship'] = 'field_class_instructorid_target_id';
-  $handler->display->display_options['fields']['field_user_full_name']['exclude'] = TRUE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -435,22 +464,11 @@ print " | ";
   $handler->display->display_options['fields']['field_user_displayname']['table'] = 'field_data_field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['label'] = 'Student Name';
-  /* Field: Global: PHP */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = 'Picture';
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php
-$noimg = base_path() . drupal_get_path(\'theme\', \'circle\') . "/images/placeholder.gif";
-$stuimg= "public://student";
-$stuimg = file_create_url($stuimg)."/";
-$ID = $row->name;
-$pic = $stuimg.$ID.\'.jpeg\';
-?>
-<img src="<?php echo $pic; ?>" width="100px" onerror="this.src=\'<?php echo $noimg; ?>\'">';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: User: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'users';
@@ -493,7 +511,7 @@ $pic = $stuimg.$ID.\'.jpeg\';
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Housing';
+  $handler->display->display_options['title'] = 'Residence';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -611,6 +629,7 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['fields']['field_housing_location']['id'] = 'field_housing_location';
   $handler->display->display_options['fields']['field_housing_location']['table'] = 'field_data_field_housing_location';
   $handler->display->display_options['fields']['field_housing_location']['field'] = 'field_housing_location';
+  $handler->display->display_options['fields']['field_housing_location']['type'] = 'taxonomy_term_reference_plain';
   /* Field: User: Display Name */
   $handler->display->display_options['fields']['field_user_displayname_1']['id'] = 'field_user_displayname_1';
   $handler->display->display_options['fields']['field_user_displayname_1']['table'] = 'field_data_field_user_displayname';
@@ -691,6 +710,40 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  /* Field: User: Photo */
+  $handler->display->display_options['fields']['field_user_photo']['id'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['table'] = 'field_data_field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['field'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['relationship'] = 'field_librarian_campusid_target_id';
+  $handler->display->display_options['fields']['field_user_photo']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting']['id'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['relationship'] = 'field_librarian_campusid_target_id';
+  $handler->display->display_options['fields']['field_user_photosetting']['exclude'] = TRUE;
+  /* Field: User: Photo */
+  $handler->display->display_options['fields']['field_user_photo_1']['id'] = 'field_user_photo_1';
+  $handler->display->display_options['fields']['field_user_photo_1']['table'] = 'field_data_field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo_1']['field'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo_1']['relationship'] = 'field_residence_campusid_target_id';
+  $handler->display->display_options['fields']['field_user_photo_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photo_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo_1']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting_1']['id'] = 'field_user_photosetting_1';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['relationship'] = 'field_residence_campusid_target_id';
+  $handler->display->display_options['fields']['field_user_photosetting_1']['exclude'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -805,13 +858,16 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['fields']['field_user_displayname']['table'] = 'field_data_field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['relationship'] = 'field_librarian_campusid_target_id';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Residence';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['field_user_displayname']['label'] = 'Librarian Name';
+  /* Field: Content: Residence */
+  $handler->display->display_options['fields']['field_librarian_residence']['id'] = 'field_librarian_residence';
+  $handler->display->display_options['fields']['field_librarian_residence']['table'] = 'field_data_field_librarian_residence';
+  $handler->display->display_options['fields']['field_librarian_residence']['field'] = 'field_librarian_residence';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Edit';
   /* Sort criterion: Content: Residence (field_librarian_residence) */
   $handler->display->display_options['sorts']['field_librarian_residence_tid']['id'] = 'field_librarian_residence_tid';
   $handler->display->display_options['sorts']['field_librarian_residence_tid']['table'] = 'field_data_field_librarian_residence';
@@ -850,10 +906,8 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'My Faculty';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view all profiles';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -861,47 +915,114 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: User: Name */
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['empty'] = TRUE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No faculty matches the search criteria';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  /* Field: Name (hidden) */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'users';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['ui_name'] = 'Name (hidden)';
   $handler->display->display_options['fields']['name_1']['label'] = '';
   $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = '';
-  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php
-$insimg = "public://faculty";
-$insimg = file_create_url($insimg)."/";
-$ID = $row->name;
-$pic = $insimg.$ID.\'.jpeg\';
-?>
-<img src="<?php echo $pic; ?>" width="120px">';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: User: Photo Path */
+  $handler->display->display_options['fields']['field_user_photopath']['id'] = 'field_user_photopath';
+  $handler->display->display_options['fields']['field_user_photopath']['table'] = 'field_data_field_user_photopath';
+  $handler->display->display_options['fields']['field_user_photopath']['field'] = 'field_user_photopath';
+  $handler->display->display_options['fields']['field_user_photopath']['label'] = '';
+  $handler->display->display_options['fields']['field_user_photopath']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photopath']['alter']['text'] = '[uid]';
+  $handler->display->display_options['fields']['field_user_photopath']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<img src="[field_user_photopath]" width="120px" />';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: User: Photo */
+  $handler->display->display_options['fields']['field_user_photo']['id'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['table'] = 'field_data_field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['field'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['label'] = '';
+  $handler->display->display_options['fields']['field_user_photo']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name]';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'user/profile/[uid]?destination=myfaculty';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Field: User: Display Name */
   $handler->display->display_options['fields']['field_user_displayname']['id'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['table'] = 'field_data_field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['label'] = '';
   $handler->display->display_options['fields']['field_user_displayname']['element_label_colon'] = FALSE;
-  /* Sort criterion: User: Created date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'users';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting']['id'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['exclude'] = TRUE;
+  /* Field: User: Edited */
+  $handler->display->display_options['fields']['field_user_edited']['id'] = 'field_user_edited';
+  $handler->display->display_options['fields']['field_user_edited']['table'] = 'field_data_field_user_edited';
+  $handler->display->display_options['fields']['field_user_edited']['field'] = 'field_user_edited';
+  $handler->display->display_options['fields']['field_user_edited']['label'] = 'Last Edited';
+  $handler->display->display_options['fields']['field_user_edited']['exclude'] = TRUE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'users';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['label'] = '';
+  $handler->display->display_options['fields']['name_2']['element_label_colon'] = FALSE;
+  /* Sort criterion: User: Title (field_user_title) */
+  $handler->display->display_options['sorts']['field_user_title_value']['id'] = 'field_user_title_value';
+  $handler->display->display_options['sorts']['field_user_title_value']['table'] = 'field_data_field_user_title';
+  $handler->display->display_options['sorts']['field_user_title_value']['field'] = 'field_user_title_value';
+  $handler->display->display_options['sorts']['field_user_title_value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_user_title_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_user_title_value']['expose']['label'] = 'Campus ID';
+  /* Sort criterion: User: Edited (field_user_edited) */
+  $handler->display->display_options['sorts']['field_user_edited_value']['id'] = 'field_user_edited_value';
+  $handler->display->display_options['sorts']['field_user_edited_value']['table'] = 'field_data_field_user_edited';
+  $handler->display->display_options['sorts']['field_user_edited_value']['field'] = 'field_user_edited_value';
+  $handler->display->display_options['sorts']['field_user_edited_value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_user_edited_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_user_edited_value']['expose']['label'] = 'Last Edited';
+  /* Sort criterion: User: Common Name (field_user_commonname) */
+  $handler->display->display_options['sorts']['field_user_commonname_value']['id'] = 'field_user_commonname_value';
+  $handler->display->display_options['sorts']['field_user_commonname_value']['table'] = 'field_data_field_user_commonname';
+  $handler->display->display_options['sorts']['field_user_commonname_value']['field'] = 'field_user_commonname_value';
+  $handler->display->display_options['sorts']['field_user_commonname_value']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_user_commonname_value']['expose']['label'] = 'Name';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -909,24 +1030,42 @@ $pic = $insimg.$ID.\'.jpeg\';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: User: Title (field_user_title) */
-  $handler->display->display_options['filters']['field_user_title_value']['id'] = 'field_user_title_value';
-  $handler->display->display_options['filters']['field_user_title_value']['table'] = 'field_data_field_user_title';
-  $handler->display->display_options['filters']['field_user_title_value']['field'] = 'field_user_title_value';
-  $handler->display->display_options['filters']['field_user_title_value']['operator'] = 'not empty';
   /* Filter criterion: User: Name (raw) */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'users';
   $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['operator'] = 'word';
   $handler->display->display_options['filters']['name']['exposed'] = TRUE;
   $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
-  $handler->display->display_options['filters']['name']['expose']['label'] = 'Campus ID';
+  $handler->display->display_options['filters']['name']['expose']['label'] = 'Search by Campus ID';
   $handler->display->display_options['filters']['name']['expose']['operator'] = 'name_op';
   $handler->display->display_options['filters']['name']['expose']['identifier'] = 'name';
   $handler->display->display_options['filters']['name']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
+  );
+  /* Filter criterion: User: Common Name (field_user_commonname) */
+  $handler->display->display_options['filters']['field_user_commonname_value']['id'] = 'field_user_commonname_value';
+  $handler->display->display_options['filters']['field_user_commonname_value']['table'] = 'field_data_field_user_commonname';
+  $handler->display->display_options['filters']['field_user_commonname_value']['field'] = 'field_user_commonname_value';
+  $handler->display->display_options['filters']['field_user_commonname_value']['operator'] = 'word';
+  $handler->display->display_options['filters']['field_user_commonname_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_user_commonname_value']['expose']['operator_id'] = 'field_user_commonname_value_op';
+  $handler->display->display_options['filters']['field_user_commonname_value']['expose']['label'] = 'Search by Name';
+  $handler->display->display_options['filters']['field_user_commonname_value']['expose']['operator'] = 'field_user_commonname_value_op';
+  $handler->display->display_options['filters']['field_user_commonname_value']['expose']['identifier'] = 'field_user_commonname_value';
+  $handler->display->display_options['filters']['field_user_commonname_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    6 => '6',
   );
 
   /* Display: Page */
@@ -948,13 +1087,12 @@ $pic = $insimg.$ID.\'.jpeg\';
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'My Students';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view all my circles';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '16';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -962,55 +1100,72 @@ $pic = $insimg.$ID.\'.jpeg\';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
-  $handler->display->display_options['fields']['name_1']['table'] = 'users';
-  $handler->display->display_options['fields']['name_1']['field'] = 'name';
-  $handler->display->display_options['fields']['name_1']['label'] = '';
-  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = '';
-  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php
-$noimg = base_path() . drupal_get_path(\'theme\', \'circle\') . "/images/placeholder.gif";
-$stuimg= "public://student";
-$stuimg = file_create_url($stuimg)."/";
-$ID = $row->name;
-$pic = $stuimg.$ID.\'.jpeg\';
-?>
-<img src="<?php echo $pic; ?>" width="120px" onerror="this.src=\'<?php echo $noimg; ?>\'">';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* No results behavior: No Student */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['ui_name'] = 'No Student';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No students matches search criteria';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  /* Field: User: Title */
+  $handler->display->display_options['fields']['field_user_title']['id'] = 'field_user_title';
+  $handler->display->display_options['fields']['field_user_title']['table'] = 'field_data_field_user_title';
+  $handler->display->display_options['fields']['field_user_title']['field'] = 'field_user_title';
+  $handler->display->display_options['fields']['field_user_title']['label'] = '';
+  $handler->display->display_options['fields']['field_user_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_title']['element_label_colon'] = FALSE;
+  /* Field: User: Photo */
+  $handler->display->display_options['fields']['field_user_photo']['id'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['table'] = 'field_data_field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['field'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['label'] = '';
+  $handler->display->display_options['fields']['field_user_photo']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['path'] = 'mycircle/[name]';
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'mycircle/[uid]';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Student Photo */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Student Photo';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<img src="[field_user_title]" width="120px" />';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: User: Display Name */
   $handler->display->display_options['fields']['field_user_displayname']['id'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['table'] = 'field_data_field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['field'] = 'field_user_displayname';
   $handler->display->display_options['fields']['field_user_displayname']['label'] = '';
   $handler->display->display_options['fields']['field_user_displayname']['element_label_colon'] = FALSE;
-  /* Field: Disable Link */
-  $handler->display->display_options['fields']['cancel_node']['id'] = 'cancel_node';
-  $handler->display->display_options['fields']['cancel_node']['table'] = 'users';
-  $handler->display->display_options['fields']['cancel_node']['field'] = 'cancel_node';
-  $handler->display->display_options['fields']['cancel_node']['ui_name'] = 'Disable Link';
-  $handler->display->display_options['fields']['cancel_node']['label'] = '';
-  $handler->display->display_options['fields']['cancel_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['cancel_node']['text'] = 'Disable Account';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name_2']['id'] = 'name_2';
+  $handler->display->display_options['fields']['name_2']['table'] = 'users';
+  $handler->display->display_options['fields']['name_2']['field'] = 'name';
+  $handler->display->display_options['fields']['name_2']['label'] = '';
+  $handler->display->display_options['fields']['name_2']['alter']['text'] = 'view user';
+  $handler->display->display_options['fields']['name_2']['element_label_colon'] = FALSE;
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -1023,11 +1178,6 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: User: Title (field_user_title) */
-  $handler->display->display_options['filters']['field_user_title_value']['id'] = 'field_user_title_value';
-  $handler->display->display_options['filters']['field_user_title_value']['table'] = 'field_data_field_user_title';
-  $handler->display->display_options['filters']['field_user_title_value']['field'] = 'field_user_title_value';
-  $handler->display->display_options['filters']['field_user_title_value']['operator'] = 'empty';
   /* Filter criterion: User: Campus ID (field_user_campusid) */
   $handler->display->display_options['filters']['field_user_campusid_value']['id'] = 'field_user_campusid_value';
   $handler->display->display_options['filters']['field_user_campusid_value']['table'] = 'field_data_field_user_campusid';
@@ -1041,6 +1191,31 @@ $pic = $stuimg.$ID.\'.jpeg\';
     2 => '2',
     1 => 0,
     3 => 0,
+  );
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    5 => '5',
+  );
+  /* Filter criterion: User: Display Name (field_user_displayname) */
+  $handler->display->display_options['filters']['field_user_displayname_value']['id'] = 'field_user_displayname_value';
+  $handler->display->display_options['filters']['field_user_displayname_value']['table'] = 'field_data_field_user_displayname';
+  $handler->display->display_options['filters']['field_user_displayname_value']['field'] = 'field_user_displayname_value';
+  $handler->display->display_options['filters']['field_user_displayname_value']['operator'] = 'word';
+  $handler->display->display_options['filters']['field_user_displayname_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_user_displayname_value']['expose']['operator_id'] = 'field_user_displayname_value_op';
+  $handler->display->display_options['filters']['field_user_displayname_value']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['field_user_displayname_value']['expose']['operator'] = 'field_user_displayname_value_op';
+  $handler->display->display_options['filters']['field_user_displayname_value']['expose']['identifier'] = 'field_user_displayname_value';
+  $handler->display->display_options['filters']['field_user_displayname_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
   );
 
   /* Display: Page */
@@ -1075,13 +1250,6 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['fields']['field_user_campusid']['field'] = 'field_user_campusid';
   $handler->display->display_options['fields']['field_user_campusid']['label'] = '';
   $handler->display->display_options['fields']['field_user_campusid']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_user_full_name']['id'] = 'field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['table'] = 'field_data_field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['field'] = 'field_user_full_name';
-  $handler->display->display_options['fields']['field_user_full_name']['label'] = '';
-  $handler->display->display_options['fields']['field_user_full_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_user_full_name']['element_label_colon'] = FALSE;
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
@@ -1142,7 +1310,7 @@ $pic = $stuimg.$ID.\'.jpeg\';
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Residence';
+  $handler->display->display_options['title'] = 'Faculty Residence';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1249,6 +1417,7 @@ $pic = $stuimg.$ID.\'.jpeg\';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
+    4 => '4',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1405,6 +1574,23 @@ print " | ";
   $handler->display->display_options['fields']['field_user_telephone']['field'] = 'field_user_telephone';
   $handler->display->display_options['fields']['field_user_telephone']['relationship'] = 'field_class_instructorid_target_id';
   $handler->display->display_options['fields']['field_user_telephone']['exclude'] = TRUE;
+  /* Field: User: Photo Setting */
+  $handler->display->display_options['fields']['field_user_photosetting']['id'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['table'] = 'field_data_field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['field'] = 'field_user_photosetting';
+  $handler->display->display_options['fields']['field_user_photosetting']['relationship'] = 'field_class_instructorid_target_id';
+  $handler->display->display_options['fields']['field_user_photosetting']['exclude'] = TRUE;
+  /* Field: User: Photo */
+  $handler->display->display_options['fields']['field_user_photo']['id'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['table'] = 'field_data_field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['field'] = 'field_user_photo';
+  $handler->display->display_options['fields']['field_user_photo']['relationship'] = 'field_class_instructorid_target_id';
+  $handler->display->display_options['fields']['field_user_photo']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_photo']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -1550,6 +1736,10 @@ print " | ";
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  /* Field: User: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'users';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';

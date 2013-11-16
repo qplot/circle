@@ -1,10 +1,12 @@
-<?php 
+<?php
   $all = array_merge($courses,$faculty,$housing);
   $num = count($all);
   //dsm($all); 
   // Given courses
   //dsm($courses);
-  $u = user_load($user->uid);
+//  $u = user_load($user->uid);
+  $u = user_load($student->uid);
+
   //dsm($u);
 
   $campusid = NULL;
@@ -12,12 +14,11 @@
     $campusid = $u->field_user_campusid['und']['0']['value'];
   }
 
-  $insimg = "public://faculty";
+  $insimg = "private://images-staff";
   $insimg = file_create_url($insimg)."/";
-  $stuimg = "public://student";
+  $stuimg = "private://images-students";
   $stuimg = file_create_url($stuimg)."/".$campusid.".jpeg";
   $noimg = base_path() . drupal_get_path('theme', 'circle') . "/images/placeholder.gif";
-
 
   $studentName = NULL;
   //dsm($u->field_user_photo['und']['0']['uri']);
@@ -113,46 +114,6 @@ $(document).ready(function(){
     <a class="various" href="#student"><img src="<?php echo $stuimg?>" onerror="this.src='<?php echo $noimg?>'"/></a>
   </div>
   <?php if(!empty($faculty['0'])): ?>
-    <?php foreach ($faculty['0'] as $person): ?>
-    <?php if(in_array('AcademicDean', $person)): ?>
-      <?php //variables to use
-        $Name = $person['Dean'];
-        $ID = $person['Dean ID'];
-        $Type = $person['Type'];
-        $Descripton = NULL;
-        $Office = $person['Dean Office'];
-        $Mailing = $person['Dean Mailing'];
-        $Phone = $person['Dean Telephone'];
-        $Email = $person['Dean Email'];
-        $pic = $insimg.$ID.".jpeg";
-      ?>
-      <div class="fieldcir">
-        <?php if (!empty($ID)): ?>
-          <div class="advisor-thumbsmall Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0"  onerror="this.src='<?php echo $noimg?>'"/></a></div>
-          <?php else: ?>
-          <div class="advisor-thumbsmall Faculty"><img src="<?php echo $noimg?>" border="0"  alt="No instructor"/></div>
-        <?php endif; ?>
-        <div class="namesmall"><?php echo $Name;?></div> <!-- displays instructor name -->
-        <div class="titlesmall">Academic Dean</div> <!-- displays course name -->
-      </div>
-      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
-        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
-        <h2 class="ch2"><?php echo $Name?></h2>
-        <h3></h3>
-        <p>
-          <?php echo $Descripton?>
-        </p>
-        <h4>Contact Information</h4>
-        <ul>
-          <li><strong>Office:</strong> <?php echo $Office?></li>
-          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
-          <li><strong>Phone:</strong> <?php echo $Phone?></li>
-          <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
-        </ul>
-      </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
   <?php foreach ($faculty['0'] as $person): ?>
     <?php if(in_array('AcademicAdvisor', $person)): ?>
     <?php //variables to use
@@ -164,7 +125,8 @@ $(document).ready(function(){
       $Mailing = $person['Advisor Mailing'];
       $Phone = $person['Advisor Telephone'];
       $Email = $person['Advisor Email'];
-      $pic = $insimg.$ID.".jpeg";
+      $pic = $person['Photo Path'];
+      //dpm($pic);
     ?>
     <div class="fieldcir">
       <?php if (!empty($ID)): ?>
@@ -176,7 +138,7 @@ $(document).ready(function(){
       <div class="titlesmall">Academic Advisor</div> <!-- displays course name -->
     </div>
     <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $Name?></h2>
       <h3></h3>
@@ -188,11 +150,51 @@ $(document).ready(function(){
         <li><strong>Office:</strong> <?php echo $Office?></li>
         <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
         <li><strong>Phone:</strong> <?php echo $Phone?></li>
-        <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+        <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
       </ul>
     </div>
   <?php endif; ?>
 <?php endforeach; ?>
+    <?php foreach ($faculty['0'] as $person): ?>
+    <?php if(in_array('AcademicDean', $person)): ?>
+      <?php //variables to use
+        $Name = $person['Dean'];
+        $ID = $person['Dean ID'];
+        $Type = $person['Type'];
+        $Descripton = NULL;
+        $Office = $person['Dean Office'];
+        $Mailing = $person['Dean Mailing'];
+        $Phone = $person['Dean Telephone'];
+        $Email = $person['Dean Email'];
+        $pic = $person['Photo Path'];
+      ?>
+      <div class="fieldcir">
+        <?php if (!empty($ID)): ?>
+          <div class="advisor-thumbsmall Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0"  onerror="this.src='<?php echo $noimg?>'"/></a></div>
+          <?php else: ?>
+          <div class="advisor-thumbsmall Faculty"><img src="<?php echo $noimg?>" border="0"  alt="No instructor"/></div>
+        <?php endif; ?>
+        <div class="namesmall"><?php echo $Name;?></div> <!-- displays instructor name -->
+        <div class="titlesmall">Academic Dean</div> <!-- displays course name -->
+      </div>
+      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
+        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
+        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
+        <h2 class="ch2"><?php echo $Name?></h2>
+        <h3></h3>
+        <p>
+          <?php echo $Descripton?>
+        </p>
+        <h4>Contact Information</h4>
+        <ul>
+          <li><strong>Office:</strong> <?php echo $Office?></li>
+          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
+          <li><strong>Phone:</strong> <?php echo $Phone?></li>
+          <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
+        </ul>
+      </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
 <?php else: ?>
   <div class="fieldcir">
     <?php if (!empty($ID)): ?>
@@ -210,7 +212,8 @@ $(document).ready(function(){
         $CourseName = $course['Course Name'];
         $InstructorName = $course['Instructor Name']; 
         $InstructorID = $course['Instructor ID'];
-        $pic = $insimg.$InstructorID.".jpeg";
+//      $pic = $insimg.$InstructorID.".jpeg";
+        $pic = $course['Photo Path'];
     ?>
     <div class="fieldcir">
       <?php if (!empty($InstructorID)): ?>
@@ -233,10 +236,10 @@ $(document).ready(function(){
         $Phone = $course['Telephone'];
         $Email = $course['Email'];
         $Room = $course['Room'];
-        $pic = $insimg.$InstructorID.".jpeg";
+        $pic = $course['Photo Path'];
         ?>
     <div id="<?php echo $InstructorID?>" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $InstructorName?></h2>
       <h3><?php echo $CourseName?></h3>
@@ -249,7 +252,7 @@ $(document).ready(function(){
         <li><strong>Office:</strong> <?php echo $Office?></li>
         <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
         <li><strong>Phone:</strong> <?php echo $Phone?></li>
-        <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+        <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
       </ul>
     </div>
   <?php endforeach; ?>
@@ -265,7 +268,7 @@ $(document).ready(function(){
           $Mailing = $staff['Librarian Mailing'];
           $Phone = $staff['Librarian Telephone'];
           $Email = $staff['Librarian Email'];
-          $pic = $insimg.$ID.".jpeg";
+          $pic = $staff['Photo Path'];
         ?>
         <div class="fieldcir">
           <?php if (!empty($ID)): ?>
@@ -274,10 +277,10 @@ $(document).ready(function(){
             <div class="advisor-thumbsmall Faculty"><img src="<?php echo $noimg?>" border="0" /></div>
           <?php endif; ?>
           <div class="namesmall"><?php echo $Name;?></div> <!-- displays instructor name -->
-          <div class="titlesmall"><?php echo $Type;?></div> <!-- displays course name -->
+          <div class="titlesmall"><?php if ($Type == 'Librarian'): ?>Residence Hall <?php endif; ?><?php echo $Type;?></div> <!-- displays course name -->
         </div>
         <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
           <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
           <h2><?php echo $Name?></h2>
           <h3></h3>
@@ -289,7 +292,7 @@ $(document).ready(function(){
             <li><strong>Office:</strong> <?php echo $Office?></li>
             <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
             <li><strong>Phone:</strong> <?php echo $Phone?></li>
-            <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+            <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
           </ul>
         </div>
       <?php endif; ?>
@@ -303,7 +306,7 @@ $(document).ready(function(){
           $Mailing = $staff['Residence Mailing'];
           $Phone = $staff['Residence Telephone'];
           $Email = $staff['Residence Email'];
-          $pic = $insimg.$ID.".jpeg";
+          $pic = $staff['Photo Path'];
         ?>
         <div class="fieldcir">
           <?php if (!empty($ID)): ?>
@@ -315,7 +318,7 @@ $(document).ready(function(){
           <div class="titlesmall"><?php echo $Type;?></div> <!-- displays course name -->
         </div>
         <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
           <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
           <h2><?php echo $Name?></h2>
           <h3></h3>
@@ -327,19 +330,19 @@ $(document).ready(function(){
             <li><strong>Office:</strong> <?php echo $Office?></li>
             <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
             <li><strong>Phone:</strong> <?php echo $Phone?></li>
-            <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+            <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
           </ul>
         </div>
       <?php endif; ?>
     <?php endforeach; ?>
   <?php endif; ?>
     <div id="student" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $stuimg?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $studentName?></h2>
-      <p><strong>Academic Dean:</strong> <a class="various" href="#<?php echo $DeanID?>"><?php echo $Dean?></a></p>
       <p><strong>Academic Advisor:</strong> <a class="various" href="#<?php echo $AdvisorID?>"><?php echo $Advisor?></a></p>
-      <h4>Course Load:</h4>
+      <p><strong>Academic Dean:</strong> <a class="various" href="#<?php echo $DeanID?>"><?php echo $Dean?></a></p>
+      <h4>Courses:</h4>
         <ul>
           <?php foreach ($courses as $course) : ?>
             <?php  
@@ -354,7 +357,7 @@ $(document).ready(function(){
               $Room = $course['Room'];
             ?>
           <li>
-            <strong><?php echo $CourseNBR?></strong> | <?php echo $CourseName?>
+            <strong><?php // echo $CourseNBR?><?php echo $CourseName?></strong>
             <?php if(!empty($InstructorID)): ?>
                | <a class="various" href="#<?php echo $InstructorID?>"><?php echo $InstructorName?></a> | 
               <?php else: ?>
@@ -362,19 +365,26 @@ $(document).ready(function(){
             <?php endif; ?>
             <?php echo $Days?> | <?php echo $StartTime?> - <?php echo $EndTime?> 
             <?php if(!empty($Building)||!empty($Room)) : ?>
-               | <a href="#" title="link to map"><?php echo $Building?> <?php echo $Room?></a>
+               | <a target="_blank" href="http://maps.duke.edu/map/index.php?id=21#!s/key=<?php echo $Building?>" title="link to map"><?php echo $Building?> <?php echo $Room?></a>
             <?php endif; ?>
           </li>
           </tr>
           <?php endforeach; ?>
         </ul>
-      <h4>Housing:</h4>
+      <h4>Residence:</h4>
+      <ul> 
+          <?php if(array_key_exists('Residence', $staff)): ?>
+            <?php $residence = $staff['Residence']; $ResidenceID = $staff['Residence ID']; $Location = $staff['Location'];?>
+            <li>Residence Name: <?php echo $Location;?></li>
+            <li>Faculty in Residence: <a class="various" href="#<?php echo $ResidenceID?>"><?php echo $residence?></a></li>
+          <?php endif; ?>
+      </ul>
       <ul>
         <?php if(!empty($housing['0'])): ?>
           <?php foreach ($housing['0'] as $staff): ?>
             <?php if(array_key_exists('Librarian', $staff)): ?>
               <?php $Librarian = $staff['Librarian']; $LibrarianID = $staff['Librarian ID']; ?>
-              <li>Librarian: <a class="various" href="#<?php echo $LibrarianID?>"><?php echo $Librarian?></a></li>
+              <li>Residence Hall Librarian: <a class="various" href="#<?php echo $LibrarianID?>"><?php echo $Librarian?></a></li>
             <?php endif; ?>
           <?php endforeach; ?>
         <?php endif; ?>
@@ -437,12 +447,12 @@ $(document).ready(function(){
         $CourseName = $course['Course Name'];
         $InstructorName = $course['Instructor Name']; 
         $InstructorID = $course['Instructor ID'];
-        $pic = $insimg.$InstructorID.".jpeg";
+        $pic = $course['Photo Path'];
     ?>
     <div class="field1">
       <?php if (!empty($InstructorID)): ?>
         <div class="advisor-thumbsmall Instructor"><a class="various" href="#<?php echo $InstructorID?>"><img src="<?php echo $pic?>" border="0"  onerror="this.src='<?php echo $noimg?>'"/></a></div>
-        <? else: ?>
+        <?php else: ?>
         <div class="advisor-thumbsmall Instructor"><img src="<?php echo $noimg?>" border="0" /></div>
       <?php endif; ?>
       <div class="namesmall"><?php echo $InstructorName;?></div> <!-- displays instructor name -->
@@ -460,10 +470,10 @@ $(document).ready(function(){
         $Phone = NULL;
         $Email = NULL;
         $Room = $course['Room'];
-        $pic = $insimg.$InstructorID.".jpeg";
+        $pic = $course['Photo Path'];
         ?>
     <div id="<?php echo $InstructorID?>" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $InstructorName?></h2>
       <h3><?php echo $CourseName?></h3>
@@ -476,13 +486,13 @@ $(document).ready(function(){
         <li><strong>Office:</strong> <?$Office?></li>
         <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
         <li><strong>Phone:</strong> <?php echo $Phone?></li>
-        <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+        <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
       </ul>
     </div>
   <?php endforeach; ?>
 
     <div id="student" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $stuimg?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $studentName?></h2>
       <p><strong>Academic Dean:</strong> <a class="various" href="#<?php echo $DeanID?>"><?php echo $Dean?></a></p>
@@ -522,7 +532,7 @@ $(document).ready(function(){
           <?php foreach ($housing['0'] as $staff): ?>
             <?php if(array_key_exists('Librarian', $staff)): ?>
               <?php $Librarian = $staff['Librarian'] ?>
-              <li>Librarian: <?php echo $Librarian?></li>
+              <li>Resident Hall Librarian: <?php echo $Librarian?></li>
             <?php endif; ?>
           <?php endforeach; ?>
         <?php endif; ?>
@@ -531,45 +541,6 @@ $(document).ready(function(){
   </div>
 </div>
 <br><br>
-<table class='coursetable'>
-  <!-- <th>Campus ID</th> -->
-  <!-- <th>Full Name</th> -->
-  <th>NBR</th>
-  <th>Course Name</th>
-  <th>Instructor Name</th>
-  <th>Start Time</th>
-  <th>End Time</th>
-  <th>Days</th>
-  <th>Location</th>
-  <!-- <th>Instructor ID</th> -->
-<?php foreach ($courses as $course) : ?>
-  <?php  
-    $CampusID = $course['Campus ID'];
-    $CourseNBR = $course['Course NBR'];
-    $CourseName = $course['Course Name'];
-    $InstructorName = $course['Instructor Name'];
-    $NodeID = $course['Node ID'];
-    $InstructorID = $course['Instructor ID'];
-    $Days = $course['Days'];
-    $StartTime = $course['Start Time'];
-    $EndTime = $course['End Time'];
-    $Building = $course['Building'];
-    $Room = $course['Room'];
-  ?>
-  <tr>
-    <!-- <td><a href="<?php //echo base_path();?>node/160774/<?php //echo $CampusID?>"><?php //echo $CampusID?></a></td> -->
-    <!-- <td class="even"><?php //echo $studentName?></td> -->
-    <td><?php echo $CourseNBR?></td>
-    <td class="even"><a href="<?php echo base_path();?>node/<?php echo $NodeID?>"><?php echo $CourseName?></a></td>
-    <td><?php echo $InstructorName?></td>
-    <td><?php echo $StartTime?></td>
-    <td><?php echo $EndTime?></td>
-    <td><?php echo $Days?></td>
-    <td><?php echo $Building?> <?php echo $Room?></td>
-    <!-- <td><?php //echo $InstructorID?></td> -->
-  </tr>
-<?php endforeach; ?>
-</table>
 </div>
 
 
@@ -618,46 +589,6 @@ $(document).ready(function(){
     <a class="various" href="#student"><img src="<?php echo $stuimg?>" onerror="this.src='<?php echo $noimg?>'"/></a>
   </div>
 <?php if(!empty($faculty['0'])): ?>
-    <?php foreach ($faculty['0'] as $person): ?>
-    <?php if(in_array('AcademicDean', $person)): ?>
-      <?php //variables to use
-        $Name = $person['Dean'];
-        $ID = $person['Dean ID'];
-        $Type = $person['Type'];
-        $Descripton = NULL;
-        $Office = $person['Dean Office'];
-        $Mailing = $person['Dean Mailing'];
-        $Phone = $person['Dean Telephone'];
-        $Email = $person['Dean Email'];
-        $pic = $insimg.$ID.".jpeg";
-      ?>
-      <div class="field2">
-        <?php if (!empty($ID)): ?>
-          <div class="advisor-thumbsmall Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0" onerror="this.src='<?php echo $noimg?>'"/></a></div>
-          <?php else: ?>
-          <div class="advisor-thumbsmall Faculty"><img src="<?php echo $noimg?>" border="0" alt="No instructor"/></div>
-        <?php endif; ?>
-        <div class="namesmall"><?php echo $Name;?></div> <!-- displays instructor name -->
-        <div class="titlesmall">Academic Dean</div> <!-- displays course name -->
-      </div>
-      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
-        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
-        <h2 class="ch2"><?php echo $Name?></h2>
-        <h3></h3>
-        <p>
-          <?php echo $Descripton?>
-        </p>
-        <h4>Contact Information</h4>
-        <ul>
-          <li><strong>Office:</strong> <?php echo $Office?></li>
-          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
-          <li><strong>Phone:</strong> <?php echo $Phone?></li>
-          <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
-        </ul>
-      </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
   <?php foreach ($faculty['0'] as $person): ?>
     <?php if(in_array('AcademicAdvisor', $person)): ?>
     <?php //variables to use
@@ -669,7 +600,7 @@ $(document).ready(function(){
       $Mailing = $person['Advisor Mailing'];
       $Phone = $person['Advisor Telephone'];
       $Email = $person['Advisor Email'];
-      $pic = $insimg.$ID.".jpeg";
+      $pic = $person['Photo Path'];
     ?>
     <div class="field2">
       <?php if (!empty($ID)): ?>
@@ -681,7 +612,7 @@ $(document).ready(function(){
       <div class="titlesmall">Academic Advisor</div> <!-- displays course name -->
     </div>
     <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+      <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
       <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
       <h2><?php echo $Name?></h2>
       <h3></h3>
@@ -693,11 +624,52 @@ $(document).ready(function(){
         <li><strong>Office:</strong> <?php echo $Office?></li>
         <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
         <li><strong>Phone:</strong> <?php echo $Phone?></li>
-        <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+        <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
       </ul>
     </div>
   <?php endif; ?>
 <?php endforeach; ?>
+    <?php foreach ($faculty['0'] as $person): ?>
+    <?php if(in_array('AcademicDean', $person)): ?>
+      <?php //variables to use
+        $Name = $person['Dean'];
+        $ID = $person['Dean ID'];
+        $Type = $person['Type'];
+        $Descripton = NULL;
+        $Office = $person['Dean Office'];
+        $Mailing = $person['Dean Mailing'];
+        $Phone = $person['Dean Telephone'];
+        $Email = $person['Dean Email'];
+        $pic = $person['Photo Path'];
+      ?>
+      <div class="field2">
+        <?php if (!empty($ID)): ?>
+          <div class="advisor-thumbsmall Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0" onerror="this.src='<?php echo $noimg?>'"/></a></div>
+          <?php else: ?>
+          <div class="advisor-thumbsmall Faculty"><img src="<?php echo $noimg?>" border="0" alt="No instructor"/></div>
+        <?php endif; ?>
+        <div class="namesmall"><?php echo $Name;?></div> <!-- displays instructor name -->
+        <div class="titlesmall">Academic Dean</div> <!-- displays course name -->
+      </div>
+      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
+        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
+        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
+        <h2 class="ch2"><?php echo $Name?></h2>
+        <h3></h3>
+        <p>
+          <?php echo $Descripton?>
+        </p>
+        <h4>Contact Information</h4>
+        <ul>
+          <li><strong>Office:</strong> <?php echo $Office?></li>
+          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
+          <li><strong>Phone:</strong> <?php echo $Phone?></li>
+          <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
+        </ul>
+      </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+
 <?php else: ?>
   <div class="field2">
     <?php if (!empty($ID)): ?>
@@ -720,7 +692,7 @@ $(document).ready(function(){
           $Mailing = $staff['Librarian Mailing'];
           $Phone = $staff['Librarian Telephone'];
           $Email = $staff['Librarian Email'];
-          $pic = $insimg.$ID.".jpeg";
+          $pic = $staff['Photo Path'];
         ?>
         <div class="field2">
           <?php if (!empty($ID)): ?>
@@ -732,7 +704,7 @@ $(document).ready(function(){
           <div class="titlesmall"><?php echo $Type;?></div> <!-- displays course name -->
         </div>
         <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
           <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
           <h2><?php echo $Name?></h2>
           <h3></h3>
@@ -744,7 +716,7 @@ $(document).ready(function(){
             <li><strong>Office:</strong> <?php echo $Office?></li>
             <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
             <li><strong>Phone:</strong> <?php echo $Phone?></li>
-            <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+            <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
           </ul>
         </div>
       <?php endif; ?>
@@ -758,7 +730,7 @@ $(document).ready(function(){
           $Mailing = $staff['Residence Mailing'];
           $Phone = $staff['Residence Telephone'];
           $Email = $staff['Residence Email'];
-          $pic = $insimg.$ID.".jpeg";
+          $pic = $staff['Photo Path'];
         ?>
         <div class="field2">
           <?php if (!empty($ID)): ?>
@@ -770,7 +742,7 @@ $(document).ready(function(){
           <div class="titlesmall"><?php echo $Type;?></div> <!-- displays course name -->
         </div>
         <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+          <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Network</a>
           <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
           <h2><?php echo $Name?></h2>
           <h3></h3>
@@ -782,7 +754,7 @@ $(document).ready(function(){
             <li><strong>Office:</strong> <?php echo $Office?></li>
             <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
             <li><strong>Phone:</strong> <?php echo $Phone?></li>
-            <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+            <li><strong>Email:</strong> <a href="mailto:<?php echo $Email?>"><?php echo $Email?></a></li>
           </ul>
         </div>
       <?php endif; ?>

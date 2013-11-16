@@ -44,6 +44,7 @@
  * @ingroup themeable
  */
 ?>
+<!--
 <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> links"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
       <strong>MAILING ADDRESS</strong><br>
@@ -56,3 +57,4 @@
       Durham, NC 27708<br>
   </div>
 </div>
+-->

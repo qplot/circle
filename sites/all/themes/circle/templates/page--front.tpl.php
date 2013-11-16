@@ -217,23 +217,23 @@
       ?>
       <div id="front-text">
         <p>
-          A digital, student-centered representation of Duke's mentoring network designed for first and second year students.
+          A digital, student-centered representation of Duke's mentoring network designed for first-year students.
         </p> 
         <h2 class="front-h2">What is an 'Advising Network'?</h2>
         <p>
           At its most basic, the Advising Network serves as an easy reference tool for students to learn about 
           (through an image and basic description) and contact (through information accessed through the Duke directory) 
-          those mentors who are actively engaged with a student at any moment in time. Those represented in the circle 
+          those mentors who are actively engaged with a student at any moment in time. Those represented in the network 
           include the student and core set of academic mentors (defined at matriculation as those assigned to a student). 
-          These mentors include Academic Deans, Academic Advisors, Faculty in Residence, Residence Hall Librarians and Faculty 
+          These mentors include academic deans, academic advisors, faculty in residence, residence hall librarians and faculty 
           instructors associated with a student's enrolled courses.
         </p>
         <h2 class="front-h2">Who can use this site?</h2>
         <p>
-          The Advising Network is designed to be accessible to all students after authentication via Duke NetID. 
-          Students can login using the link below:
+          The advising network is designed to be accessible to all first-year students after authentication via Duke NetID. 
         </p>
-        <a class="btn" href="user/login">Login to View Your Advising Circle</a>
+
+        <a class="btn" href="https://<?php echo $_SERVER['SERVER_NAME']; ?>/Shibboleth.sso/Login?target=https%3A%2F%2F<?php echo $_SERVER['SERVER_NAME']; ?>%2F%3Fq%3Dshib_login%2Fcomments">Login to View Your Advising Network</a>
       </div>
       <img id="front-image" src="<?php print $path?>circles.jpg" />
 

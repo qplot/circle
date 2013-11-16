@@ -1,4 +1,4 @@
-<?php 
+<?php
   $all = array_merge($courses,$faculty,$housing);
   $num = count($all);
   //dsm($all); 
@@ -86,48 +86,7 @@ images.each(function() { // set the css for thumbnails
     <a class="various" href="#student"><img src="<?php echo $stuimg?>" onerror="this.src='<?php echo $noimg?>'"/></a>
   </div>
   <?php if(!empty($faculty['0'])): ?>
-    <?php foreach ($faculty['0'] as $person): ?>
-    <?php if(in_array('AcademicDean', $person)): ?>
-      <?php //variables to use
-        $Name = $person['Dean'];
-        $ID = $person['Dean ID'];
-        $Type = $person['Type'];
-        $Descripton = NULL;
-        $Office = $person['Dean Office'];
-        $Mailing = $person['Dean Mailing'];
-        $Phone = $person['Dean Telephone'];
-        $Email = $person['Dean Email'];
-        // $pic = $course['Dean Photo'];
-        // $pic = file_create_url($pic);
-        $pic = $insimg.$ID.".jpeg";
-      ?>
-      <div class="fieldcir">
-        <?php if (!empty($ID)): ?>
-          <div class="advisor-thumbcir Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0" class="shrink" onerror="this.src='<?php echo $noimg?>'"/></a></div>
-          <?php else: ?>
-          <div class="advisor-thumbcir Faculty"><img src="<?php echo $noimg?>" border="0" class="shrink" alt="No instructor"/></div>
-        <?php endif; ?>
-        <div class="namecir"><?php echo $Name;?></div> <!-- displays instructor name -->
-        <div class="titlecir">Academic Dean</div> <!-- displays course name -->
-      </div>
-      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
-        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
-        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
-        <h2 class="ch2"><?php echo $Name?></h2>
-        <h3></h3>
-        <p>
-          <?php echo $Descripton?>
-        </p>
-        <h4>Contact Information</h4>
-        <ul>
-          <li><strong>Office:</strong> <?php echo $Office?></li>
-          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
-          <li><strong>Phone:</strong> <?php echo $Phone?></li>
-          <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
-        </ul>
-      </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
+
   <?php foreach ($faculty['0'] as $person): ?>
     <?php if(in_array('AcademicAdvisor', $person)): ?>
     <?php //variables to use
@@ -170,6 +129,50 @@ images.each(function() { // set the css for thumbnails
     </div>
   <?php endif; ?>
 <?php endforeach; ?>
+
+<?php foreach ($faculty['0'] as $person): ?>
+    <?php if(in_array('AcademicDean', $person)): ?>
+      <?php //variables to use
+        $Name = $person['Dean'];
+        $ID = $person['Dean ID'];
+        $Type = $person['Type'];
+        $Descripton = NULL;
+        $Office = $person['Dean Office'];
+        $Mailing = $person['Dean Mailing'];
+        $Phone = $person['Dean Telephone'];
+        $Email = $person['Dean Email'];
+        // $pic = $course['Dean Photo'];
+        // $pic = file_create_url($pic);
+        $pic = $insimg.$ID.".jpeg";
+      ?>
+      <div class="fieldcir">
+        <?php if (!empty($ID)): ?>
+          <div class="advisor-thumbcir Faculty"><a class="various" href="#<?php echo $ID?>"><img src="<?php echo $pic?>" border="0" class="shrink" onerror="this.src='<?php echo $noimg?>'"/></a></div>
+          <?php else: ?>
+          <div class="advisor-thumbcir Faculty"><img src="<?php echo $noimg?>" border="0" class="shrink" alt="No instructor"/></div>
+        <?php endif; ?>
+        <div class="namecir"><?php echo $Name;?></div> <!-- displays instructor name -->
+        <div class="titlecir">Academic Dean</div> <!-- displays course name -->
+      </div>
+      <div id="<?php echo $ID?>" class="profile" style="display:none;width:100%;">
+        <a onclick="$.fancybox.close()" value="CloseFB" class="backtocircle">Back to Circles</a>
+        <img src="<?php echo $pic?>" onerror="this.src='<?php echo $noimg?>'"/>
+        <h2 class="ch2"><?php echo $Name?></h2>
+        <h3></h3>
+        <p>
+          <?php echo $Descripton?>
+        </p>
+        <h4>Contact Information</h4>
+        <ul>
+          <li><strong>Office:</strong> <?php echo $Office?></li>
+          <li><strong>Mailing:</strong> <?php echo $Mailing?></li>
+          <li><strong>Phone:</strong> <?php echo $Phone?></li>
+          <li><strong>Email:</strong> <a href="mailto:<?$Email?>"><?php echo $Email?></a></li>
+        </ul>
+      </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+
 <?php else: ?>
   <div class="fieldcir">
     <?php if (!empty($ID)): ?>
@@ -188,9 +191,10 @@ images.each(function() { // set the css for thumbnails
         $CourseName = $course['Course Name'];
         $InstructorName = $course['Instructor Name']; 
         $InstructorID = $course['Instructor ID'];
+        $pic = $course['Photo Path'];
         // $pic = $course['Instructor Pic'];
         // $pic = file_create_url($pic);
-        $pic = $insimg.$InstructorID.".jpeg";
+        //$pic = $insimg.$InstructorID.".jpeg";
     ?>
     <div class="fieldcir">
       <?php if (!empty($InstructorID)): ?>
@@ -200,6 +204,7 @@ images.each(function() { // set the css for thumbnails
       <?php endif; ?>
       <div class="namecir"><?php echo $InstructorName;?></div> <!-- displays instructor name -->
       <div class="titlecir"><?php echo $CourseName;?></div> <!-- displays course name -->
+      <div class="titlecir"><?php echo $InstructorID;?></div> <!-- displays Instructor ID -->
     </div>
   <?php endforeach; ?>
 

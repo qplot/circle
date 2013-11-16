@@ -21,10 +21,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -54,7 +54,7 @@ function courses_feeds_importer_default() {
           ),
           2 => array(
             'source' => 'STU_CAMPUS_ID',
-            'target' => 'entityreference_lookup:field_advisors_student',
+            'target' => 'field_advisors_student',
             'unique' => FALSE,
           ),
           3 => array(
@@ -64,7 +64,7 @@ function courses_feeds_importer_default() {
           ),
           4 => array(
             'source' => 'ADV_CAMPUS_ID',
-            'target' => 'entityreference_lookup:field_advisors_advisor',
+            'target' => 'field_advisors_advisor',
             'unique' => FALSE,
           ),
           5 => array(
@@ -74,7 +74,7 @@ function courses_feeds_importer_default() {
           ),
           6 => array(
             'source' => 'DEAN_CAMPUS_ID',
-            'target' => 'entityreference_lookup:field_advisors_dean',
+            'target' => 'field_advisors_dean',
             'unique' => FALSE,
           ),
         ),
@@ -104,10 +104,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -221,17 +221,12 @@ function courses_feeds_importer_default() {
             'unique' => FALSE,
           ),
           19 => array(
-            'source' => '1ST PRI INSTR NAME',
-            'target' => 'field_class_instructorname',
-            'unique' => FALSE,
-          ),
-          20 => array(
             'source' => '1ST PRI UNIQUE',
             'target' => 'entityreference_lookup:field_class_instructorid',
             'unique' => FALSE,
           ),
         ),
-        'update_existing' => '0',
+        'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
         'bundle' => 'class',
@@ -257,10 +252,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -275,7 +270,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsUserProcessor',
       'config' => array(
         'roles' => array(
+          6 => '6',
           3 => 0,
+          4 => 0,
+          5 => 0,
         ),
         'status' => '1',
         'defuse_mail' => 0,
@@ -377,10 +375,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -455,10 +453,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -483,15 +481,20 @@ function courses_feeds_importer_default() {
           ),
           1 => array(
             'source' => 'Unique ID',
-            'target' => 'field_librarian_campusid',
+            'target' => 'entityreference_lookup:field_librarian_campusid',
             'unique' => FALSE,
           ),
           2 => array(
+            'source' => 'Unique ID',
+            'target' => 'entityreference:field_librarian_campusid',
+            'unique' => FALSE,
+          ),
+          3 => array(
             'source' => 'Residence Hall',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          3 => array(
+          4 => array(
             'source' => 'Residence Hall',
             'target' => 'field_librarian_residence',
             'unique' => FALSE,
@@ -523,10 +526,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -555,18 +558,23 @@ function courses_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'Unique ID',
-            'target' => 'entityreference_lookup:field_residence_campusid',
-            'unique' => FALSE,
-          ),
-          3 => array(
             'source' => 'Residence Hall',
             'target' => 'field_residence_residence',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'Residence Hall Full Address',
             'target' => 'field_residence_residenceaddress',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'Unique ID',
+            'target' => 'field_residence_campusid',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'Unique ID',
+            'target' => 'entityreference_lookup:field_residence_campusid',
             'unique' => FALSE,
           ),
         ),
@@ -596,10 +604,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -669,10 +677,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
-        'direct' => FALSE,
+        'direct' => 1,
         'directory' => 'public://feeds',
         'allowed_schemes' => array(
-          0 => 'public',
+          'public' => 'public',
         ),
       ),
     ),
@@ -687,7 +695,10 @@ function courses_feeds_importer_default() {
       'plugin_key' => 'FeedsUserProcessor',
       'config' => array(
         'roles' => array(
+          5 => '5',
           3 => 0,
+          4 => 0,
+          6 => 0,
         ),
         'status' => '1',
         'defuse_mail' => 0,

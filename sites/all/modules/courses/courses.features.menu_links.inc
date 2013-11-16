@@ -16,7 +16,12 @@ function courses_menu_default_menu_links() {
     'link_path' => '<front>',
     'router_path' => '',
     'link_title' => 'Home',
-    'options' => array(),
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 1,
@@ -58,12 +63,69 @@ function courses_menu_default_menu_links() {
     'weight' => -49,
     'parent_path' => 'classes',
   );
+  // Exported menu link: main-menu:comments
+  $menu_links['main-menu:comments'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'comments',
+    'router_path' => 'comments',
+    'link_title' => 'Comments/Questions',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+  );
+  // Exported menu link: main-menu:delete-content
+  $menu_links['main-menu:delete-content'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'delete-content',
+    'router_path' => 'delete-content',
+    'link_title' => 'Delete Content',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Delete content form',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -40,
+    'parent_path' => 'import',
+  );
+  // Exported menu link: main-menu:for-advisors
+  $menu_links['main-menu:for-advisors'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'for-advisors',
+    'router_path' => 'for-advisors',
+    'link_title' => 'Information for Advisors',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+  );
   // Exported menu link: main-menu:housing
   $menu_links['main-menu:housing'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'housing',
     'router_path' => 'housing',
-    'link_title' => 'Housing',
+    'link_title' => 'Residence',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -74,7 +136,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -46,
     'parent_path' => 'classes',
   );
   // Exported menu link: main-menu:import
@@ -87,6 +149,7 @@ function courses_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -94,6 +157,44 @@ function courses_menu_default_menu_links() {
     'has_children' => 1,
     'expanded' => 0,
     'weight' => -46,
+  );
+  // Exported menu link: main-menu:import-content
+  $menu_links['main-menu:import-content'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'import-content',
+    'router_path' => 'import-content',
+    'link_title' => 'Import All',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -41,
+    'parent_path' => 'import',
+  );
+  // Exported menu link: main-menu:import/advisor_importer
+  $menu_links['main-menu:import/advisor_importer'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'import/advisor_importer',
+    'router_path' => 'import/%',
+    'link_title' => 'Advisors',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/class_importer
   $menu_links['main-menu:import/class_importer'] = array(
@@ -111,7 +212,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/faculty_importer
@@ -130,7 +231,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -49,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/housing_importer
@@ -138,7 +239,7 @@ function courses_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => 'import/housing_importer',
     'router_path' => 'import/%',
-    'link_title' => 'Housing',
+    'link_title' => 'Residence',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -149,7 +250,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -43,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/librarian_importer
@@ -168,7 +269,26 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -45,
+    'parent_path' => 'import',
+  );
+  // Exported menu link: main-menu:import/residence_importer
+  $menu_links['main-menu:import/residence_importer'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'import/residence_importer',
+    'router_path' => 'import/%',
+    'link_title' => 'Faculty Residence',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -44,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/roster_importer
@@ -187,7 +307,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -47,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/student_importer
@@ -206,7 +326,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -50,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:import/user_importer
@@ -225,7 +345,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -43,
+    'weight' => -42,
     'parent_path' => 'import',
   );
   // Exported menu link: main-menu:librarian
@@ -252,7 +372,66 @@ function courses_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => 'mycircle',
     'router_path' => 'mycircle',
-    'link_title' => 'My Circle',
+    'link_title' => 'My Network',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+  );
+  // Exported menu link: main-menu:myfaculty
+  $menu_links['main-menu:myfaculty'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'myfaculty',
+    'router_path' => 'myfaculty',
+    'link_title' => 'Faculty',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'parent_path' => 'mystudents',
+  );
+  // Exported menu link: main-menu:mystudents
+  $menu_links['main-menu:mystudents'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'mystudents',
+    'router_path' => 'mystudents',
+    'link_title' => 'Students',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'parent_path' => 'mystudents',
+  );
+  // Exported menu link: main-menu:residence
+  $menu_links['main-menu:residence'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'residence',
+    'router_path' => 'residence',
+    'link_title' => 'Faculty Residence',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -263,7 +442,8 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
+    'parent_path' => 'classes',
   );
   // Exported menu link: main-menu:roster
   $menu_links['main-menu:roster'] = array(
@@ -281,7 +461,7 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'parent_path' => 'classes',
   );
   // Exported menu link: main-menu:users
@@ -300,21 +480,47 @@ function courses_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -43,
     'parent_path' => 'classes',
+  );
+  // Exported menu link: user-menu:user/profile
+  $menu_links['user-menu:user/profile'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'user/profile',
+    'router_path' => 'user/%',
+    'link_title' => 'My Profile',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.
   t(' Advisors');
+  t('Advisors');
   t('Classes');
+  t('Comments/Questions');
+  t('Delete Content');
   t('Faculty');
+  t('Faculty Residence');
   t('Home');
-  t('Housing');
+  t('Import All');
   t('Importers');
+  t('Information for Advisors');
   t('Librarian');
-  t('My Circle');
+  t('My Network');
+  t('My Profile');
+  t('Residence');
   t('Roster');
   t('Student');
+  t('Students');
   t('Users');
 
 
